@@ -15,7 +15,7 @@ const { findParticularTx } = require("./lib/routesAndServices/utils/transactionD
 connectRedis()
 
 
-initCronJobs()
+//initCronJobs()
 
 // updatePendingTransactionStatus()
 //payhubBankScrapper()
