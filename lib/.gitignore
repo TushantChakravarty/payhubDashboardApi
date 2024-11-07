@@ -1,0 +1,12 @@
+#environment
+.env
+.env.development
+
+#com
+package-lock.json
+node_modules/
+
+#vscode
+.vscode
+
+#assets

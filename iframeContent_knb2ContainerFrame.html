@@ -1,0 +1,2368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" class=""><head>
+<script language="JavaScript" src="web/L001/script/calendar.js"></script>
+<script language="JavaScript" src="web/L001/script/calconfig.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript">
+history.go(1); 
+</script>
+<title>Kotak</title>
+<link rel="stylesheet" href="web/L001/tricomcss/main.css" type="text/css">
+<link rel="stylesheet" href="web/L001/tricomcss/print.css" type="text/css" media="print">
+<link rel="stylesheet" href="web/L001/tricomcss/ie-print.css" type="text/css" media="print">
+
+<script type="text/javascript" src="web/L001/tricomjs/jquery.min.js"></script>
+<script type="text/javascript" src="web/L001/tricomjs/main.js"></script>
+<script type="text/javascript" src="web/L001/tricomjs/nested_accordion.js"></script>
+<script type="text/javascript" src="web/L001/tricomjs/jsDatePick.min.1.3.js"></script>
+<script src="web/L001/tricomjs/form.js" language="JavaScript"></script>
+<script type="text/javascript" src="web/L001/tricomjs/jquery.blockUI.js"></script>
+<script type="text/javascript" src="web/L001/script/jquery.printElement.js"></script>
+<script type="text/javascript" src="web/L001/script/DisableRightClick.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+   $(".header").hide();   
+    });
+//alert($(img).attr('src'));
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+  $("html").addClass("js");
+$(function() {
+    $("#side").accordion({initShow : "ul.current"});
+    $("html").removeClass("js");
+	
+	$(".popup").click(function()
+	{
+		window.scrollTo(0,0);  
+	});
+	
+	
+	setTimeout(function(){
+      // do something
+
+		$(".tipLink").each(function (i) {
+		
+		$(this).click(function(){
+				//alert('ab');
+			 $(".tipLink").children().hide();
+			 $(".tipLink").removeClass("relative");
+			$(this).addClass("relative");
+			 $(this).children().eq(0).show();
+			});
+      	});
+	$(".tipClose").click(function(){
+	$(this).parents().eq(1).hide();
+	return false;
+ 	});
+},400);	
+});
+
+
+//--><!]]>
+
+
+function toUpper(txt) {
+	document.getElementById(txt).value = document.getElementById(txt).value.toUpperCase();
+	}
+	
+function charcterNotAllow(id){
+ 	var alphanumeric = "!&=[]\\\/'{}|\"<>?";
+$("#"+id).keyup( function(event) {
+	var data = $(this).val();
+	if(event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 35 || event.keyCode == 36 || event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
+		// Do nothing
+	} else {
+		for ( var i = 0; i < data.length; i++) {
+			if (alphanumeric.indexOf(data.charAt(i)) != -1) {
+				var str = data.replace(data.charAt(i), "");
+				//$(this).val(str);
+				$(this).val($(this).val().substring(0, i));
+				//return false;
+			}
+		}
+	}
+	
+	//return true;									
+});
+document.getElementById(id).value = document.getElementById(id).value.toUpperCase();
+}
+
+
+function showWait(){
+
+   $.blockUI({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#ffffff', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px',          
+            color: '#fff', 
+            // filter:alpha(opacity=60),  			
+  			 opacity: 0.3, 
+            cursor:null
+        }  }); 
+ 
+   setTimeout($.unblockUI, 180000);
+}
+
+
+   function preventBack(){
+   
+   window.history.forward();
+   }
+
+   preventBack();
+
+    window.onunload=function(){null};
+
+
+	$(document).ready(function(){
+	
+
+
+
+
+
+	
+
+
+
+setTimeout(function(){
+ $("a").not("[href^=#]").not("[href^='javascript']").not("[class^='fDown']").not("[class^='infoLinks']").not("[class^='block']").not("[class^='download_csv']").not("[class^='download_pdf']").click(
+function(){
+showWait();
+}
+
+);
+
+$('form').not("[class^='noblockUI']").submit(function() {
+  showWait();
+});
+
+},200);	
+
+
+
+});
+
+</script>
+<script>	
+
+$(document).ready(function(){
+var  selectedElement ;
+setTimeout(function(){
+	
+$('.drop-custom-select').each(function(i,el){
+		if ($(el).find("ul").children().size() > 10 ) {
+			$(el).find("ul").addClass('selecth')
+		}
+		})
+	},500);
+	
+
+
+
+	
+	
+});
+
+
+
+
+
+
+//for number validation
+ function numeralsOnly(evt) {
+		  evt = (evt) ? evt : event;
+		  var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+		   ((evt.which) ? evt.which : 0));
+		 //alert(charCode + " "  +evt.keyCode);
+		  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+		  if((charCode==37 && evt.keyCode==37)||(charCode==37 && evt.keyCode==0)){
+		 return false;
+		  }
+		  
+		  	if(charCode==46 && evt.keyCode==0){
+		   		return true;
+		 	 }else if(charCode==46 && evt.keyCode == 46){
+		 	 	return true;
+		 	 }
+		 	 else{
+		  	// alert("Enter numerals only in this field.");
+		  	  if((charCode==37 && evt.keyCode == 37) || (charCode==39 && evt.keyCode == 39)){
+		  			return true;
+		  		}
+		   		return false;
+		   	 }
+		  }
+		   return true;
+		}
+		
+
+function setCursorPosition(textControlID,pos)
+{
+
+ 
+var text = document.getElementById(textControlID);
+
+if (text != null)
+{
+
+if(text.setSelectionRange)
+{
+      text.focus();
+      text.setSelectionRange(pos,pos);
+ }
+else if (text.createTextRange)
+{
+
+var FieldRange = text.createTextRange();
+FieldRange.moveStart('character', pos);
+FieldRange.collapse();
+FieldRange.select();
+}
+}
+}
+var oldVal='';
+var oldVal1='';
+var flag = 0;
+function caret(el) {
+  var pos = 0;
+    // IE Support
+    if (document.selection) 
+    {
+        el.focus ();
+        var Sel = document.selection.createRange();
+        var SelLength = document.selection.createRange().text.length;
+        Sel.moveStart ('character', -el.value.length);
+        pos = Sel.text.length - SelLength;
+    }
+    // Firefox support
+    else if (el.selectionStart || el.selectionStart == '0')
+        pos = el.selectionStart;
+
+    return pos;
+
+}
+		
+function setAmount(event,id)
+{
+
+var val = document.getElementById(id).value;
+
+var curPos = caret(document.getElementById(id));
+	if(val!=null && val.indexOf(".")!=-1)
+		{
+		    var keyCode =  event.keyCode ? event.keyCode : ((event.charCode) ? event.charCode : event.which);
+				    
+			document.getElementById(id).maxLength=18;
+			var index = val.indexOf(".");
+			var decimalVal  = val.substring(index+1,val.length); 
+			
+			if(decimalVal.length>2 ||(flag==1 && keyCode==110) ){
+			document.getElementById(id).value=oldVal;
+			}else{
+			
+			document.getElementById(id).value=val;
+			oldVal = val;
+			
+			setCursorPosition(id,curPos);
+			
+			}
+			flag = 1;
+		} else {
+		
+		if(val!=null && val.length>15)
+		{
+			if(val.indexOf(".")==-1)
+			{
+				document.getElementById(id).value=oldVal1;
+				//document.getElementById(id).maxLength=15;
+				
+			}else{
+			
+			    document.getElementById(id).maxLength=18;
+			    
+			
+			}
+		} else {
+		
+			document.getElementById(id).value=val;
+			oldVal1	 = val;
+			document.getElementById(id).maxLength=18;
+			setCursorPosition(id,curPos);
+			
+		}
+		flag = 0;
+		//document.getElementById(id).value=oldVal;
+		//document.getElementById(id).maxLength=15;
+		}
+
+}
+		
+		
+		
+
+//added by vivek for appeding decimals in amount
+ function appendDecmals(values,nameofelement){
+          // alert(nameofelement);
+          // alert(values.indexOf("."));
+          var posofdecimal=values.indexOf(".");
+          var lenAmount=values.length;
+           if(posofdecimal > -1){
+           //alert("posofdecimal "+posofdecimal );
+           //alert("lenAmount "+lenAmount );
+           if(posofdecimal == (lenAmount-1)){
+             $("input[name="+nameofelement+"]").val(values+"00");
+           }
+           else if(posofdecimal == (lenAmount-2)){
+            $("input[name="+nameofelement+"]").val(values+"0");
+           }
+           }else{
+		     
+             if(values != ""){ 
+                $("input[name="+nameofelement+"]").val(values+".00");
+		     }		
+            }
+           }
+
+ function dateNumeralsOnly(evt) {
+		  evt = (evt) ? evt : event;
+		  var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+		   ((evt.which) ? evt.which : 0));
+		   //alert(charCode);
+		  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+		  	if(charCode==47){
+		   		return true;
+		 	 }else{
+		  	 //alert("Enter numerals only in this field.");
+		   		return false;
+		   	 }
+		  }
+		   return true;
+		}
+
+
+
+</script>
+<script language="Javascript">
+//Added by vivek for date validation
+/**
+ * DHTML date validation script. Courtesy of SmartWebby.com (http://www.smartwebby.com/dhtml/)
+ */
+// Declaring valid date character, minimum year and maximum year
+var dtCh= "/";
+var minYear=1900;
+var maxYear=2100;
+
+function isInteger(s){
+	var i;
+    for (i = 0; i < s.length; i++){   
+        // Check that current character is number.
+        var c = s.charAt(i);
+        if (((c < "0") || (c > "9"))) return false;
+    }
+    // All characters are numbers.
+    return true;
+}
+
+function stripCharsInBag(s, bag){
+	var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not in bag, append to returnString.
+    for (i = 0; i < s.length; i++){   
+        var c = s.charAt(i);
+        if (bag.indexOf(c) == -1) returnString += c;
+    }
+    return returnString;
+}
+
+function daysInFebruary (year){
+	// February has 29 days in any year evenly divisible by four,
+    // EXCEPT for centurial years which are not also divisible by 400.
+    return (((year % 4 == 0) && ( (!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28 );
+}
+function DaysArray(n) {
+	for (var i = 1; i <= n; i++) {
+		this[i] = 31;
+		if (i==4 || i==6 || i==9 || i==11) {this[i] = 30;}
+		if (i==2) {this[i] = 29;}
+   } 
+   return this
+}
+
+function isDate(dtStr){
+	var daysInMonth = DaysArray(12);
+	var pos1=dtStr.indexOf(dtCh);
+	var pos2=dtStr.indexOf(dtCh,pos1+1);
+	var strDay=dtStr.substring(0,pos1);
+	var strMonth=dtStr.substring(pos1+1,pos2);
+	var strYear=dtStr.substring(pos2+1);
+	strYr=strYear;
+	if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1);
+	if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1);
+	for (var i = 1; i <= 3; i++) {
+		if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1);
+	}
+	month=parseInt(strMonth);
+	day=parseInt(strDay);
+	year=parseInt(strYr);
+	if (pos1==-1 || pos2==-1){
+		alert("The date format should be : dd/mm/yyyy");
+		return false;
+	}
+	if (strMonth.length<1 || month<1 || month>12){
+		alert("Please enter a valid month");
+		return false;
+	}
+	if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
+		alert("Please enter a valid day");
+		return false;
+	}
+	if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
+		alert("Please enter a valid 4 digit year between "+minYear+" and "+maxYear);
+		return false;
+	}
+	if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false){
+		alert("Please enter a valid date");
+		return false;
+	}
+return true
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Kotak</title>
+<script language="JavaScript">
+
+setFormat('dd/MM/yyyy');
+
+function showPopup(urlValue)
+{
+    window.showModalDialog(urlValue,'IMAGING','dialogTop:10px;dialogLeft:10px;dialogWidth:1000px;dialogHeight:700px;scroll:no;toolbar:no;menubar:no;locationbar:no;status:no;resizable:yes');
+}
+
+</script>
+<script src="web/L001/script/FormatFunction.js" language="JavaScript"></script></head>
+
+<body>
+<script language="javascript">
+  function dotNotAllow(evt)
+    {
+   
+  evt = (evt) ? evt : event;
+		  var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+		   ((evt.which) ? evt.which : 0));
+		   //alert(charCode);
+		  
+		  	if(charCode==46){
+		   		return false;
+		 	 }else{
+		  	 //alert("Enter numerals only in this field.");
+		   		return true;
+		   	 }
+		  
+		   return true;
+		}
+
+ function validatedate()
+
+{
+
+	var dt1=document.QuerySelection.txnSrcFromDate;
+
+	var dt2=document.QuerySelection.txnSrcToDate;
+
+
+
+	//alert(dt.value);
+
+if(dt1.value != "" && dt1.value!="dd/mm/yyyy"){
+
+	if (isDate(dt1.value)==false){
+
+		dt1.value="dd/mm/yyyy";
+
+		return false;
+
+	}
+
+	}else if(dt1.value == ""){
+
+	dt1.value="dd/mm/yyyy";
+
+	}
+
+	
+
+	if(dt2.value != "" && dt2.value!="dd/mm/yyyy"){
+
+	if (isDate(dt2.value)==false){
+
+		dt2.value="dd/mm/yyyy";
+
+		return false;
+
+	}
+
+   }else if(dt2.value == ""){
+
+	dt2.value="dd/mm/yyyy";
+
+	}
+}
+
+ 
+  //modified by ratheesh for AccountActivity CR 
+  function onRptSubmit(outPutformat)
+	{
+    var tempString = 'BANKAWAYREPORTING;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO0qD4EtHgpZN5lqpjg4WMmEvGmfvHtxxJzTz8dhN0i0r0u1yfHFH56VM';
+	var format = document.FullStatementForm.format;
+	 
+	if(format==null)
+	{
+		if (outPutformat=='CSV')
+		{
+			document.FullStatementForm.ReportName.value="FullStatementExcelRpt";
+		}else{	
+			document.FullStatementForm.ReportName.value="FullStatementRpt";
+		}
+		 
+	}
+	else if(format.checked==true){
+		    
+			if (outPutformat=='CSV')
+			{
+				document.FullStatementForm.ReportName.value="FullStatementExcelRpt_OldFrmt";
+			}else{
+				document.FullStatementForm.ReportName.value="FullStatementRpt_OldFrmt";
+			}
+		 
+	}else{
+			if (outPutformat=='CSV')
+			{
+				document.FullStatementForm.ReportName.value="FullStatementExcelRpt";
+			}else{	 
+				document.FullStatementForm.ReportName.value="FullStatementRpt";
+			}		 
+	}	
+	
+	
+		document.FullStatementForm.outPutFormat.value=outPutformat;
+//Fix for Account Statement Download Issue <Start>
+		//document.FullStatementForm.actionSwitch.value="Y";
+	var temp = document.getElementById('actionSwitch').value;
+	temp="Y";
+	document.getElementById('actionSwitch').value = temp;
+//Fix for Account Statement Download Issue <End>
+
+		return true;
+	}
+ function fnLastFinYearTransactions(year) {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUg5VEqPB91aNjnk1uJNyy17kcVpM0Uo4vsfHMM2xN2N98kn%0D%0A69Mt0wo2jPPiikg%3D";
+		document.FullStatementForm.submit();
+		 
+	}
+	
+	function fnLastCalYearTransactions() {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUg5VEqKD99aNjnk1uJNyy17kcVpM0Uo4vsfHMM2xN2N98kn%0D%0A69Mt0wo2jPPiikg%3D";
+		document.FullStatementForm.submit();
+	}
+	
+	function fnCurrentCalYearTransactions() {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUctVUysAMdAMjTP4Pde7Dx3gM5wa3J6vsFaEtU739mW5sor%0D%0As5FyqFVip9X02jGxIYQ%3D";
+		document.FullStatementForm.submit();
+	}
+	
+	function fnCurrentFinYearTransactions(year) {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUctVUysAMdFOjbP4Pde7Dx3gM5wa3J6vsFaEtU739mW5sor%0D%0As5FyqFVip9X02jGxIYQ%3D";
+		document.FullStatementForm.submit();
+	}
+	
+ function downloadYearlyReport()
+	{
+		  if(document.getElementById('r1').checked)
+		 { 
+			fnLastCalYearTransactions();
+		 }		
+		  else if(document.getElementById('r2').checked)
+		 {
+			fnCurrentCalYearTransactions();
+		 }
+		 else if(document.getElementById('r3').checked)
+		 { 
+			fnLastFinYearTransactions();
+	 	 }		
+		else if(document.getElementById('r4').checked)
+		  {
+			fnCurrentFinYearTransactions();
+		  }
+	}	
+	
+	//Added by Veeneeth Shetty for FINEBCR86 PDF download 23Nov2018 start
+	 function downloadYearlyReportPDF()
+	{
+		  if(document.getElementById('r1').checked)
+		 { 
+			fnLastCalYearTransactionsPDF();
+		 }		
+		  else if(document.getElementById('r2').checked)
+		 {
+			fnCurrentCalYearTransactionsPDF();
+		 }
+		 else if(document.getElementById('r3').checked)
+		 { 
+			fnLastFinYearTransactionsPDF();
+		 }		
+		else if(document.getElementById('r4').checked)
+		  {
+			fnCurrentFinYearTransactionsPDF();
+		  }
+	}
+	
+	function fnLastCalYearTransactionsPDF() {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUg5VEqKD99aNjnk1uJNyy17kcVpIExKxaUlVdc708ON%2FM8v%0D%0Ao4Z57Fh0x%2FzpxRWceIkA";
+		document.FullStatementForm.submit();
+	}
+	
+	function fnCurrentCalYearTransactionsPDF() {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUctVUysAMdAMjTP4Pde7Dx3gM5wa3J6rcg4NYsBls2b8dQr%0D%0AuJd64AA2mIe2kT66btl5jvZV";
+		document.FullStatementForm.submit();
+	}
+	
+	function fnLastFinYearTransactionsPDF() {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUg5VEqPB91aNjnk1uJNyy17kcVpIExKxaUlVdc708ON%2FM8v%0D%0Ao4Z57Fh0x%2FzpxRWceIkA";
+		document.FullStatementForm.submit();
+	}
+	
+	function fnCurrentFinYearTransactionsPDF() {
+		document.FullStatementForm.method = "POST";
+		document.FullStatementForm.action = "BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUctVUysAMdFOjbP4Pde7Dx3gM5wa3J6rcg4NYsBls2b8dQr%0D%0AuJd64AA2mIe2kT66btl5jvZV";
+		document.FullStatementForm.submit();
+	}
+	
+	//Added by Veeneeth Shetty for FINEBCR86 PDF download 23Nov2018 end
+	
+function downloadReport()
+{
+
+	   var e =  document.getElementById("selectList2");
+	
+       var strDocType =  e.options[e.selectedIndex].text;
+	   
+	   var csvMode = document.getElementById("csvMode");
+	   
+	   if(csvMode!==null)
+	   {
+		strDocType = document.getElementById("csvMode").innerHTML;
+	   }
+    //  alert(strDocType);
+       onRptSubmit(strDocType);
+       
+
+        setTimeout(function(){
+
+        $.unblockUI();
+
+       },200);     
+
+       
+ }
+ 
+ //modified by ratheesh for AccountActivity CR
+ function downloadReport1()
+{
+	
+	
+	if(format==null)
+	{
+	//alert("format unselected");
+		 
+	//if (outPutformat=='CSV')
+	if (format=='CSV')
+			{
+				document.FullStatementForm.ReportName.value="FullStatementExcelRpt";
+			}else{
+				document.FullStatementForm.ReportName.value="FullStatementRpt";
+			}
+		 
+	}
+	else if(format.checked==true){
+	//alert("old format");
+		 
+			//if (outPutformat=='CSV')
+				if (format=='CSV')
+			{
+				document.FullStatementForm.ReportName.value="FullStatementExcelRpt_OldFrmt";
+			}else{
+			   document.FullStatementForm.ReportName.value="FullStatementRpt_OldFrmt";
+			}
+		 
+	}else{
+	//alert("new format");
+		 
+			//if (outPutformat=='CSV')
+				if (format=='CSV')
+			{
+				document.FullStatementForm.ReportName.value="FullStatementExcelRpt";
+			}else{
+				document.FullStatementForm.ReportName.value="FullStatementRpt";
+			}
+		 
+	}
+
+
+        setTimeout(function(){
+
+        $.unblockUI();
+
+       },200);     
+
+       
+ }
+
+	function checkOnLoad(){
+
+	if($('#frmDt').val()=="dd/mm/yyyy"){
+ 	  $('#frmDt').val("");
+ 	}
+ 	if($('#toDt').val()=="dd/mm/yyyy"){
+ 	  $('#toDt').val("");
+ 	}
+
+//Fix for Account Statement Download Issue <Start>
+	//if(document.FullStatementForm.actionSwitch.value=="N"){
+ if(document.getElementById('actionSwitch').value =="N"){
+//Fix for Account Statement Download Issue <End>
+	document.FullStatementForm.action='BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=m2KKPZgu2hfJVJoEoZYbZ89cqpxy';
+
+	}else
+	{
+	document.FullStatementForm.action ='BANKAWAYREPORTING;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO0qD4EtHgpZN5lqpjg4WMmEvGmfvHtxxJzTz8dhN0i0r0u1yfHFH56VM';
+	document.FullStatementForm.actionSwitch.value="N";
+
+	}
+	}
+
+
+$(document).ready(function() {
+ setTimeout(function(){
+		var txnvalue1 = document.getElementById('txnvalue').value; 
+		//alert(txnvalue2);
+
+	if(($("#txnvalue").val() == null ) || ($("#txnvalue").val() == "" )){
+	//alert($("#txnvalue").val());
+	$("#opening").show();
+		$("#closing").show();
+
+	}else{
+	$("#opening").hide();
+		$("#closing").hide();
+	}
+				  },100); 
+$('#IdShowTransactions').click(function() {
+
+
+ 
+ 
+ });
+ $('#IdGo').click(function() {
+ 
+
+ 
+ 
+ });
+
+if($("#frmDt").val() == ""){
+$("#frmDt").val("dd/mm/yyyy");
+}
+if($("#toDt").val() == ""){
+$("#toDt").val("dd/mm/yyyy");
+}
+
+
+$("#frmDt").focus(function() {
+
+	$(this).filter(function() {
+ 		return $(this).val() == "" || $(this).val() == "dd/mm/yyyy"
+	}).removeClass("watermarkOn").val("");
+ 	});
+
+    
+
+    $("#frmDt").blur(function() {
+	$(this).filter(function() {
+
+	return $(this).val() == ""
+	}).addClass("watermarkOn").val("dd/mm/yyyy");
+	});
+
+
+$("#toDt").focus(function() {
+
+	$(this).filter(function() {
+
+ 	return $(this).val() == "" || $(this).val() == "dd/mm/yyyy"
+	}).removeClass("watermarkOn").val("");
+});
+
+    
+
+    $("#toDt").blur(function() {
+
+		$(this).filter(function() {
+
+		   return $(this).val() == ""
+
+		 }).addClass("watermarkOn").val("dd/mm/yyyy");
+
+	 });
+
+
+
+
+ 
+
+	setTimeout(function(){
+
+	$("#optionBox").hide();
+
+	 	$("#GoButton1").show();
+
+		$("#AllLinks").show();
+
+	},100)
+    	 
+		
+	 
+	
+	
+	
+
+     var toggleVar=true;
+$(document).ready(function(){
+
+	$("#optionButton").click(function(){
+		if(toggleVar){
+			toggleVar=false;
+		}else{
+			toggleVar=true;
+		}
+	    $(this).toggleClass("more");
+		$("#optionBox").slideToggle("slow",togglefunctionality);
+	})
+});
+function togglefunctionality(){
+	if(toggleVar){
+		$("#optionButton").text("More Options");
+			$("#GoButton1").show();
+		$("#AllLinks").show( );
+	}else{
+		$("#optionButton").text("Less Options");
+		$("#GoButton1").hide();
+		$("#AllLinks").hide();
+	}
+}
+
+});
+</script>
+<script language="javascript">
+function moretransaction()
+	{
+	//alert("1");
+			var Parameter='';
+			alert(Parameter);
+			var param=0;
+			param = parseInt+'';
+			alert(param);
+			param=+30;
+			alert(param);
+			var string =param+' ';
+			alert(string);
+	
+	 document.FullStatementForm.action='BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=m2KKPZgu2hfJVJoEoZYbZ89cqpxy';
+         return true;
+	}
+</script>
+<div class="wrapper">
+<div class="mainContainer">
+
+
+
+
+<object id="oCAPICOM" width="0" height="0" classid="clsid:A996E48C-D3DC-4244-89F7-AFA33EC60679" codebase="capicom.cab#version=2,0,0,0">
+</object>
+
+
+<script language="JavaScript" src="web/L001/script/signscript.js"></script>
+
+
+
+<script src="web/L001/script/fnScript.js" language="JavaScript"></script>
+<script src="web/L001/script/PrintPreView.js" language="JavaScript"></script>
+<script src="web/L001/script/sort_fnscript.js" language="JavaScript"> </script>
+<script language="JavaScript"> 
+
+$(document).ready(function(){
+
+$( "a:contains('Special Offers')").attr('href', '#');
+$( "a:contains('Secure online transactions (VbV)')").attr('href', '#');
+$( "a:contains('Special Offers')").click(function(){window.open("http://www.kotak.com/kotakoffers/", "", "width=900, height=700");});
+$( "a:contains('Secure online transactions (VbV)')" ).click(function(){window.open('https://cardsecurity.enstage.com/ACSWeb/EnrollWeb/KotakBank/main/indexLoginD.jsp', "", "width=900, height=700");});
+$( "a:contains('Beneficiary Registration Demo')").attr('href', '#');
+$( "a:contains('Beneficiary Registration Demo')" ).click(function(){window.open("http://www.kotak.com/How_to_Add_Beneficiary.pdf", "", "width=900, height=700");});
+
+});
+
+</script>
+
+
+<div class="lhs">
+<div>
+<h3>BANKING</h3>
+<div id="side">
+<ul class="accordion">
+<form action="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=rxOMMbhSjzg%3D" method="POST" name="treeMnuID">
+<script language="JavaScript">
+		
+
+	$(document).ready(function(){
+
+	//alert("hi form n_sidebar");
+	var appendlink='BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnEm7RdmQU3RpC0t9AzwZaqo9ZoLjzNDPA0ef%2F6DS%2BSUH5oE6g8EP8suVZhU%2FL4NSx7xA%0D%0Av%2Br9FahfwSOkkV6E%2BW3x1U5DnHL3v5%2BGTwSSUgclFUBTrvHbLfasWglntGGFNQPWQgpq5CnVhn7kwuaq%0D%0AzWiRgMgPvrQR5aMFonv83pfpmcBb5EybI4ueTrzh0F7SzvOWOyWJhbzK4%2BixwBS0T0klouIK7h48u1IW%0D%0A%2BiAtXRXbjqGCkggv6HoQbbEosrEfCRen00yylt8N6GiM3j1fSFUzUsEnTN7LaicrKL1KEbkw7TLiOpCD%0D%0Apwg0AIxkluWZqrrIYVyVceJqyB6ztZuDmlI%3D';
+     $("#setfirstlink").append("<a id='firstparent2' class='trigger' href='#'>Accounts Overview</a>");
+     $('#firstparent2').attr('href',appendlink);
+	
+	});
+		
+		
+		
+		j=0;
+function appendValues()
+{
+	var temp = "";
+
+	for(j=0;document.forms[j] != null;j++)
+	{
+		for(i=0; document.forms[j].elements[i] != null ; i++)
+		{
+			if(document.forms[j].elements[i].type != "submit" && document.forms[j].elements[i].name != "LocationList")
+			{
+				temp = temp + document.forms[j].elements[i].name + "|";
+			}
+		}
+	}
+	j--;
+	newText=document.createElement("<INPUT TYPE='HIDDEN' NAME='concatenatedFields'>")
+	document.forms[j].insertBefore(newText);
+	document.forms[j].concatenatedFields.value = temp;
+
+}
+
+
+<!--Added for defect id : Start-->
+function openWin_Solutionplacehldr(path){
+
+	window.open(path,"corporate_popup","width=700, height=450, toolbar=no, addressbar=no, locationbar=no, resize=no, scrollbars=yes");
+
+}
+
+
+
+function openWin(url)
+{
+	var path = "web/L001/corporate/jsp/common/"+url;
+	window.open(path,"corporate_popup","width=700, height=450, toolbar=no, addressbar=no, locationbar=no, resize=no, scrollbars=yes");
+}
+
+
+
+var firstflag=0;
+
+firstflag=0;
+
+
+
+
+
+
+
+</script>
+<script language="JavaScript" src="web/L001/script/n_cooltree.js"></script>
+<script language="JavaScript">
+		var TREE1_FORMAT =
+						[
+						//0. left position
+							0,
+						//1. top position
+							0,
+						//2. show +/- buttons
+							true,
+						//3. couple of button images (collapsed/expanded/blank)
+							["web/L001/images/b.gif", "web/L001/images/b.gif", "web/L001/images/b.gif"],
+						//4. size of images (width, height,ident for nodes w/o children)
+							[16,16,0],
+						//5. show folder image
+							true,
+						//6. folder images (closed/opened/document)
+							["web/L001/images/bfolder.gif", "web/L001/images/ofolder.gif", "web/L001/images/ofolder.gif"],
+						//7. size of images (width, height)
+							[9,9],
+						//8. identation for each level [0/*first level*/, 16/*second*/, 32/*third*/,...]
+							[0,14,28,42,56,70,84,98,112,126,140,154,168,192,206,220,234,248,262],
+						//9. tree background color ("" - transparent)
+							"",
+						//10. default syle for all nodes
+							"clsNode",
+						//11. styles for each level of menu (default style will be used for undefined levels)
+							[],
+						//12. true if only one branch can be opened at same time
+							false,
+						//13. item pagging and spacing
+							[0,0]
+						];
+
+
+						var TREE1_NODES = [
+
+
+
+
+[{"id":2},'Savings / Current Account',null,null,
+
+		
+			        	
+					
+
+					[{"id":3},'Account Summary','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnEm7RdmQU3RNTHl7MyYBab8casHPzsHZS3DN%2F6He5jAh7d0NmPRA%2FcOQZQE2ZsE98PUQ%0D%0A6%2F%2FKBKZEkg72iU2Cq1feh3tjijyyzZeISVa%2BGhIyD1VF4Orje9W2FUo1tHCGBEf%2FAVY5tmrVnE74%2Fuq3%0D%0Am2X1gMcNv6IasbE%2FvyvNkZfrhodL%2BUGRAcK5S%2BfMw1%2FS1PmcdWKuj%2FXq%2BOir1iGvVR0FvKcx4Qw6v1pX%0D%0AzyohXEb8lLvQuCYYyW8Ld%2BUfuKYJPxa3mwaIoOhonWmT0jJeUBAEdO0NWcTPZiJ%2FeoJmDLActFyX', null],
+																																
+
+					
+			        
+						
+							[{"id":2},'View / Download Account Statement','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnEm7RdmQU3RNTGltNTsNVK4jes%2FWxtzOWHieyafGxzAU69kOwMMSofnVbAY3f%2FMX96dU%0D%0Ao%2BroBL1YihP2iQC%2BsG3sxE9Lmyyp7JCRZQWDWQtsXBZX8N31ft6xWQ92knHVYBjuBwhm8iLSgVPt176W%0D%0AsX7DmcU%2Fo6Iy8KgQtn%2BkxYL9m7Va7mWXAaOdUbyFxUrd8%2BKQcxCfj8jn4ezi8VOjQ04ZvqEN7zc1nUcZ%0D%0A%2FXRkR0v8s7qVkzo0%2F1oncegMo%2B80Wiygm0mdidtK3XKTgDFCXwcYbvYOeYDmJRctLqlAGuBl', null],
+						
+
+                        										
+						
+							
+						
+
+			 ],
+
+
+			 
+		      
+
+		                  
+		                  
+		                  [{"id":7},'Trade Services and Credit Facilities', null,null,
+		                        
+		                       
+		                       
+		                        
+		                        
+		                       
+		                        
+		                        
+		                        
+		                        [{"id":7},'Credit Facilities', null, null,
+		                            
+		                             [{"id":71},'Query on facilities', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtIUp9NCAAQaosdsDL28qONUaF2LzR4SFIxpoixtkP6smHcyAhYtdJ145w%0D%0Ai7j6E6hDiC7wkVPazz7yz0hDnHKK1Kq2CjmCXxY4HERw4dH3XN%2B3Qzx%2Fj3%2FVHhjuBwhs9D%2FyjFr4wb7%2F%0D%0AuTbelcINpaQr6b5smFncp7%2FR05VB6U2yBoybGNXR0FbWgNaadSWJgvm%2BwuytxRy0XlNshawq9BEyvVoj%0D%0A9id%2FcEH3hKGC2y867kcEavgAtKFWPzaQunq4kdNb0mmY8DNJVE4zT8Y3K8nNYj8xPad9F7I7hBjXDaaY%0D%0A9Tw6HJJMkazA', null],
+		                        
+		                             [{"id":72},'Snapshot of facilities', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtIUp9NCAAQaosdsDL28qONUaF2LzR4SFIxpoixtkP6smHcyAhYtdJ145y%0D%0Ai7j6E6hDiC7wkVPazz7yz0hDnHKK1Kq2CjmCXxY4HERw4dH3XN%2B3Qzx%2Fj3%2FVHhjuBwhs9D%2FyjFr4wb7%2F%0D%0AuTbelcINpaQr6b5smFncp7%2FR05VB6U2yBoybGNXR0FbWgNaadSWJgvm%2BwuytxRy0XlNshawq9BEyvVoj%0D%0A9id%2FcEH3hKGC2y867kcEavgAtKFWPzaQunq4kdNb0mmY8DNJVE4zT8Y3K8nNYj8xPad9F7I7hBjXDaaY%0D%0A9Tw6HJJMkazA', null],
+		                        
+		                        ],
+		                        
+		                        
+		                        
+		                        <!-- changed by Ramesh Patel (Tricom India)start -->
+		                        
+		                     [{"id":71},'Documentary Credits',null,null,    
+		                         
+		                        
+		                         [{"id":711},'Imports Documentary Credits', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtK1VoPzsAKYggcdjLwcbFS3DN7bbL%2FTIc68U33N0Doem3SVIMdNsa3awc%0D%0A%2FLj6E6hDiC7wkVPazz7%2Bwl5vizyS4I6AX1bXGjo%2FBURf8sr%2FX8irFTtfpVq8dkr9BQV65i%2FSnEXz5vqp%0D%0AlSuKiMYc97IW9bUdsmXy3qL3lIJNrW6XAYOeRuSD4lfB1vmQfjfBqPL35eC%2BxxCDQ053ha8z7wonuhk0%0D%0AwQoGclDmib6fjxAY4koNPsUkgYZWOhahk3K%2F2Io%3D', null],
+		                          
+									
+		                         [{"id":712},'Export Documentary Credits', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtJ0BoPzsAKYggcdjLwcbFS3DN7bbL%2FTIc68U33N0DoeW3SVIMdNsa3awc%0D%0A%2F7j6E6hDiC7wkVPazz7%2Bwl5vizyS4I6AX1bXGjo%2FBURf8sr%2FX8irFT9LsEe6BBj7Fgpn9C3FgUPy3Neg%0D%0AgD3E3M4UoecM%2BLQ0l2L3iMvRh4dM6Ai4BoyRS%2BLGkWHW0uaaeCGUx9Xw%2BP220gGyb1gk8Yc78BchvUxR%0D%0AzQYBd3LxlKGAkh0izkEMZrEsiYIkWj%2B8jFaSgYcd', null],
+		                         
+		                           
+		                        [{"id":713},'Domestic Outward Documentary Credits', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtj8MDcMjEkDlXfZ%0D%0A9m923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69YxYPAyIi%2FO5WhSRo87xedfMDDNuu%0D%0AsesrSJYqfKqBGgT7bZCAggDKj4E0C5cE46KEY%2BxK4rg13x%2FFAFSBLLr4lefbAeM0Hn7Xm20JPolmxUVN%0D%0AVzFsZ8IG%2B7PZZWGQJ%2Bv6FxWm8v%2BsZkXTvWTnn5RHKMtVh%2BU%3D', null],
+		                        
+		                         [{"id":713},'Domestic Inward Documentary Credits', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtj6MDcMjEkDlXfZ%0D%0A9m923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69YxYPAyIi%2FO5WhSRo87xedfMDDNuu%0D%0AsesrSJYqfKqBGgT7bZCAggDKj4E0C5cE46KEY%2BxK4rg13x%2FFAFSBLLr4lefbAeM0Hn7Xm20JPolmxUVN%0D%0AVzFsZ8IG%2B7PZZWGQJ%2Bv6FxWm8v%2BsZkXTvWTnn5RHKMtVh%2BU%3D', null],
+		                        
+		                         
+		                         
+		                         ],
+		                    
+		                      
+		                      
+		                        
+		                        
+		                        [{"id":72},'Bills',null,null,
+		                         
+		                        [{"id":721},'Imports Bills', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26sQUWeHudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtXxPzcMjEkDlXfZ%0D%0A9G923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69Yx4NCjE4nrxQlit14b5JaPUCNvan%0D%0ApP1lHJI0Nv%2BbFwXSSJeF1GnsnIQ1TvEr5K2LbuoPkY4i2wDPBkLUQ53%2FiPrTFPIFMmiE70kXPZp80kNa%0D%0AahNMQ4cx3Yb0UHunIfn2XiWozc%2FvHWPvnGml5Ms%3D', null],
+		                        
+		                        
+		                        [{"id":722},'Export Bills', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f174QUWeHudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtnxPzcMjEkDlXfZ%0D%0A92923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69YxoZHyw%2B7O5WhSRo87xedfMDDNuu%0D%0AsesrSJo8YKqBGgT7bZCAggDKj4E0C5cE46KEY%2BxK4rg13x%2FFAFSBLLr4lefbAeM0Hn7Xm2EfIod61RY%2F%0D%0AZh9LRqUmwJnrTXadDfL3BlGgxcudfUryg02IvcYF', null],
+		                        
+		                         
+		                         
+		                        
+		                         [{"id":723},'Domestic Outward Bills', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL6GCoKbupGkG%2BW%2F%2FJHv%2FHGmcxnlk5pWOB%0D%0A%2BAZn5Zyp3WcbsXANNw1HFtOXahh1XZgRkaQKPPpYbhzKmNWK5%2BvjeBYvJhcF2bxHoz1ovZRzTdsiJqmj%0D%0As%2B82Bp4nZOWdHTTnUZyd1FTwkcYjB9MnxqWLZrJ7sIo0yEnqCl%2BTZJDz3MDXEuE4KWPKgG0JO5xhwBF8%0D%0AcShmP60r2JHzQCKwPPz3Bkqm0tiNGm%2FpmFaorYJ2KuZUh5zRp49R85Hh7XVOE6A%3D', null],
+		                          [{"id":724},'Domestic Inward Bills', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL6GCoKbupGkG%2BW%2FnJHv%2FHGmcxnlk5pWOB%0D%0A%2BAts5Zyp3WcbsXANNw1HFtOXahh1XZgRkaQKPPpYbhzKmNWK5%2BvjeBYvJhcF2bxHoz1ovZRzTdsiJqmj%0D%0As%2B82Bp4nZOWdHTTnUZyd1FTwkcYjB9MnxqWLZrJ7sIo0yEnqCl%2BTZJDz3MDXEuE4KWPKgG0JO5xhwBF8%0D%0AcShmP60r2JHzQCKwPPz3Bkqm0tiNGm%2FpmFaorYJ2KuZUh5zRp49R85Hh7XVOE6A%3D', null],
+
+ [{"id":725},'View Purchase Bills', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99MalovIQJUnm%2F%2Fus9VfAzOIEbQLBExGL5EbqcB1T7INmBPvLQFjELj1IbtXCB%0D%0Atm9jxsiQ8mpIyA%3D%3D', null],
+		                      
+		                         ],
+		                      
+		                        
+		                      
+		                       
+		                        [{"id":73},'Loans',null,null,                         
+		                         
+		                      
+		                         [{"id":731},'Exports Loans', 'BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG%2F1LCD99Eapv%2Ba8OWVaB8vwgHNo7GY0LV5VI3Gz5HO6eD16oA9SpM%2F3UTkh%2BmFUDsnqK%0D%0AogZXzd%2BP%2FWIUnylpIkp3AcambCJTRYZJ9cslDb9Rcgz%2FlcyA%2BqWfNyw1ciIA1O5XhCB0wb5ebu8CFsa5%0D%0ApesgSM9ice%2BRHBXwVYqnjQCv24EzDdg35LiRdP9K%2F6QRiwjPAFSBeafvjPbBXad3Hn7X8l0XN9U4kENt%0D%0AVzFmcYUmwJnySladPvjgXkqj8umkEmigwQ%3D%3D', null],
+		                        
+		                        
+								
+								[{"id":732},'Commercial Loans','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG8VCAD8SIqhj56gUTTuy9PsmHcdhGJ0SSJ1f0zSdY5uJAkOvMsKOMaHqVXA7iU8YsmeX%0D%0AjC0Ympyc2G0ajXpEcFJkB4%2BpX2pBVYRfvNYCMvwAREn%2FgsaK56WHJy8kPF5cnpxamRF%2F8LgAMatKEeaz%0D%0ApMIxG5R5Uu2eEg79RNmPh1m%2BqZIxAMQj6biMYuEPi4U2whvBAkWbZZ2wtf3bFP4wPmPt3kpaHodpz0VY%0D%0ARjNnd4oxx9bea0GgD%2F7nChqM6eKKNGj4zHOEi74TMfBQ1Kb%2BiL8e2pDH%2BUxPXa3Urezt3xJsRbg%3D', null],
+								
+								                        
+		                        
+		                        ],
+		                       
+		                        
+		                         
+		                        
+		                         
+		                        
+		                        
+		                  ],
+
+		      
+
+		
+
+		
+		
+					
+                                  
+					[{"id":3},'Deposits',null,null,
+			         
+			       	
+  
+					
+
+					[{"id":3},'Deposit Summary','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG8BDFzQgNaZp%2FLIhXXac4vY9G4dUKIsQUJJZ%2BXypKKmPGgyCQOObPu7HJ2M5hB00%2Bn%2BN%0D%0AqyJx0MqYhl0AlXlRdlIyA9GGcTlpSIVlrL9ZefhefgDrj9Gb7aa2YxYAaSUFyrtWoyxr5eBkJ%2FsPAeqk%0D%0AstohBZo3LbzUJxjwdYCejACuzMYjB9MnxqWLZrJto4cxwwrJQ1CcbtPCjvLcE%2FYyPm%2FWyAQuPI5n0wh4%0D%0AUTlnbMIM2pnpTWOQK8nrDVGh%2BOumKGXp0WGiupRAK%2FZCnJbQqI821or69lVeV9Odj%2Bai4R5aPa5ngzhT%0D%0ASxbWZBWmmXSVTVehwERbA2mT5q%2B1pw%3D%3D', null],
+					
+						
+				<!--	[{"id":3},'Open Fixed Deposit','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12YpkzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D', null],-->
+					
+					
+					
+					
+					
+					
+					<!--  Added by sushitha for FATCA chnages start  -->
+					
+					
+					
+					<!--  Added by sushitha for FATCA chnages end  -->
+					
+					
+					<!--Added by Surabhi  Start  -->
+					
+										 
+									 [{"id":3},'Regularize RD','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc13IpkzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D', null],
+									 
+									  
+									 [{"id":3},'Premature Withdrawal of Deposit','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12YpnjWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D', null],
+									 
+									 
+									 [{"id":3},'Link a Fixed Deposit to Savings /Current Account','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12wsnzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D', null],
+									 
+									 <!--Added by Veeneeth shetty for FINEBVR73 FD delinking on 8May2019 starts -->
+									 [{"id":3},'Delink a Fixed Deposit from Savings /Current Account','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12QsnzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Or8aa8LTY1Gxoc3ZtHmyBl9OBpRbwqDf26%0D%0AiOplRQ%3D%3D', null],
+									 <!--Added by Veeneeth shetty for FINEBVR73 FD delinking on 8May2019 ends -->
+									 
+									 [{"id":3},'Change Maturity Instruction for Fixed Deposit','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVFTysfdFB0zPbWQ8WrmYobFNpsyXbV1I2Dn6iGHA6%2FxJZmvAKhrKBeAkcRJC0p1ti%0D%0AdpomXNDnD2PQUI2IudItMecogM6KtlPgCbwtfwAWh6iNuKFFv6YmpXwDdA%3D%3D', null],
+									 
+									 <!--Added by Surabhi  End  -->
+									 
+									 
+					<!--  Added by sushitha for FATCA chnages start  -->
+										
+					
+															
+					<!--  Added by sushitha for FATCA chnages end  -->
+					
+					
+					
+					
+					
+					
+			         
+						
+							[{"id":3},'Deposit Calculator','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqBTBya8YNFB0ynATwcNvzsSQEpLsy7ER2UWAnuyD2ov%2FxJZrvoJnp6WMXA%3D', null],
+						
+
+						
+					//	[{"id":3},'Request',null, null,
+						
+						//	[{"id":31},'Open Term Deposit','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVFTysfdFB0zPbWQ8WrmYobFNpsyXbV1I2Dn6iGHA6%2FxJZmvAKhrKBeAkcRJC0ulti%0D%0AdpomXNDnD2PQUI2IudItMecogM6KtlPgCbwtfwAWh6iNuKFFv6YmpXwDdA%3D%3D', null],
+						
+						//	[{"id":32},'Link a Term Deposit Account to Current / Savings Account','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVFTysfdFB0zPbWQ8WrmYobFNpsyXbV1I2Dn6iGHA6%2FxJZmvAKhrKBeAkcRJqxtlti%0D%0AdpomXNDnD2PQUI2IudItMecogM6KtlPgCbwtfwAWh6iNuKFFv6YmpXwDdA%3D%3D', null],
+						
+					//		[{"id":33},'Premature Withdrawal of Term Deposit','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVFTysfdFB0zPbWQ8WrmYobFNpsyXbV1I2Dn6iGHA6%2FxJZmvAKhrKBeAkcRJC0t1ti%0D%0AdpomXNDnD2PQUI2IudItMecogM6KtlPgCbwtfwAWh6iNuKFFv6YmpXwDdA%3D%3D', null],
+							
+							
+					//	],
+						
+
+			   ],
+		
+		
+			
+		//	 [{"id":4},'Account Statement','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVFTysfdFB0zPbWQ8WrmYobFNpsyXbV1I2Dn6iGHA6%2FxJZmvAKhrKBeAkcRJejoVti%0D%0AdpomXNDnD2PQUI2IudItMecogM6KtlPgCbwtfwAWh6iNuKFFv6YmpXwDdA%3D%3D',null,
+				
+		//	 ],
+			 
+		
+		
+		
+	
+
+
+
+
+
+				
+
+
+			[{"id":1},'Transfers and Payments',null,null,
+     
+            
+                    [{"id":1},'Transfers and Payments Overview','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnScBGrQXAXwsRvRwUaEpJpyTCV0kKGDKOW1A6ozkLvOcaneqrKjMxHbO8nBNv%0D%0AJ68zAI%2ByAGjGRtXU55BkD%2BU9mM%2BB%2F27gFKoqXxAHlvDp8uk%2BhKYqgmtYIZBXRSWhT6M9da94rA%2Fxfrpr%0D%0A5VdMBYuXYxoPmo%2BsJM920cZ3ldqq',null],
+					
+					
+
+					[{"id":2},'Make A Transfer','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnQ8RZmCH6SQMRqSkFfU1VqHrvGHUQCn2jKXEvrHYmztwVmqObbTQ9La6eyDBl%0D%0AcZ5hIMGVFGzaRpTW%2FZ0rMaIskMaf23yhOPlyDT8JkPj07roz', null],
+
+					
+					
+					 
+
+			       [{"id":3},'Add / Manage Beneficiaries','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrVCBSe6b8ZGlA%2FASEw8mAVIT0FOpS%2F0W0gNDWa0FGI8u3YmzsYPkqWGWDI5F%2Bup0ztr%0D%0AaJYIBdzx', null],
+																																												
+                   
+					
+					
+
+					<!--[{"id":5},'Transactions Pending With Bank','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnQ8RZmCH6SQMRqSkFfU1VqHrvGHUQCn2jKXEvrHYmztwVmqObbTQ9La6eyCl2%0D%0Ae5UyAIK1D2LaFaXQ55AtMeNkgsOb4z2EPKooDREDjuXt6%2BBm7eBtqndMKatAWHQ%3D', null],-->
+					[{"id":5},'View / Manage Standing Instructions','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVECigYotimA7KUgwYjjoHZ1dbpTPfUUgXVlbxLncvsD8rmvQVzo7URS4xDb%2BRgRhQ%0D%0AYpV8NZOgCH7VVoHc5ppkD%2BEqkcOB7D2xNLArCzsHjP6b4uJvoIQqi30DcMRiCjaiYudQJA%3D%3D', null],					
+
+					
+					
+					
+
+					[{"id":3},'Saved Transfers','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrVCBSe6b8ZGlA%2FASEwsuz4DbXBIpynFWEMWRV6iGHE3%2FxJZu%2BEagaOmfiE2RI%2FWvBNt%0D%0AbpIgFYSVHmOJY5zQ%2FtQXPvIhkYq7%2BXyoLqUgXxAJjOab4uJvoIQqi30DdsRFBieqWPA5baZwuly0K9pl%0D%0A9FlgEsXz', null],
+					
+
+					
+					
+						
+					
+
+					// [{"id":6},'View Completed Transactions','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnQ8RZmCH6SQMRqSkFfU1VqHrvGHUQCn2jKXEvrHYmztwVmqObbTQ9La6eyCtt%0D%0Af4xhIo6sFmHRQZDRqaA2Puo3lMmb4nKoLuIrThUWsvTa77o29pIknnV3IN8U', null],
+                    [{"id":6},'Completed Transfers','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YoRZFDnnTcpfjQzLTwcbiTwHfVFJgynHS08WEjKOW1A6ozkLvOcaneqrKgk2EKKZlAlh%0D%0AToMvXLeoA3qUdprY%2BZghK%2BEg1f6d6nO1PKc3QhYIkbPV7%2BtzgLUsiSUKYoNHBiG8WNcUZLNm9FCjS%2B5l%0D%0A63dGG4ivfx4PjY%2FEJM920cZ3ldqq', null],
+					
+					
+							
+						
+					
+					 
+
+					 [{"id":12},'Unapproved Transactions','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqdFCi26WtdTkxPIXhBRjyYHeVRIqTHTWmAwOGylGGYgjC4I1cxdoKOTfjQMC7eeyCQi%0D%0AXp4tPqetATD6E7Db%2FasCM%2BN5sOS7rU2jM6AqRR4nkuXP5fFivKd2oj5fJ4FBFjebUvMIZ%2Bsk7yjrZOhj%0D%0A50BMIoCtJycTyfz4dalPys5J0bL0sLRlZA3tTAPlp2s7JZyoKS2Hs0Jv%2BnoUVF69Sj4j', null],
+
+					
+				
+					 
+
+					[{"id":10},'My Approval Queue','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YodESgi5ftddiwXrVRYNo2Y0bFBIryLAWxs9TVyjHHE6ljkehqgi1Z6cZTQxGKKVoQVq%0D%0AJ7Y4Qa%2BkES31RYXH5oIlM6QVgM%2Ba7juDM7AcbRUB39Dz3qFCoKQ5s11QNb1oDDe7dMwLKZpcmjXaS9NY%0D%0A2XV5JqqMTCsmz9r4bvlJwsxbzNG8sKd2cxHofR61lmpnesm9ODiAr01%2FqFUUSGeNXmZgr5EizfgvuPtx%0D%0AVI7J7o5v1SHyXNor', null],
+
+					
+				
+
+					[{"id":11},'My Repair Queue','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqdFCi26WtdTkxPIXhBRlC0RW0FKpy7Eb1MBHmr5L2Y6sCIanvBGqvGheCEqDYKClBM5%0D%0AQ90ID4i1D2zAUKHN58kJJqQKkN3P2Xi2PK0xCygTh%2BDYrO9mvKQbjX9bedUCBCesTvAeQK9lrBK4PLpM%0D%0A6UZEP5z%2BKg%3D%3D', null],
+
+					
+					
+					
+					
+					
+					
+				
+					
+						/* Added by Sharath for Transactions Module. Start */
+				
+					
+					
+			],
+
+	
+	
+	
+			[{"id":9},'Debit Cards', '../../../j1001dc/KotakCard/login.do?dc=ov', ,
+			
+
+			],
+		
+	
+	 
+			  [{"id":6},'Service Requests',null,null,
+			
+					[{"id":61},'New Service Request','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnXdBQkAnaaQcOry0VfRlj4BTCX1QQP322Ez4X5CocofFGwfGTbzQMAKaVyDAi%0D%0Ad5U0KIX8KkL3dLbhr4ctO%2BEInMSEtlqjM6ExShVGsfDP%2FO5gtadtpXZXMItFESGbU%2B1QR7NnvwjmaLxY%0D%0A40VcE4u3PCklqvbcYf1w1cJKiKT1taEoRSfJbEGEkG0zPYa9Mw2XrEkhknkpYxWVTWB24bI74PQMn54r%0D%0AZLj7prthxDjSV4lP2EL%2FcfKQdQO1NHcyOO0%3D', null],
+					
+					[{"id":62},'Service Requests History','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnXdBQkAnaaQcOry0VfRlj4AbVSk8SAnuuKXo%2Bp3YuvdAp1ZGdfi0RHevA', null],
+
+						
+			 ],
+			
+	
+	
+				
+
+					[{"id":7},'Tax Details','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqBTBya8YNFB0zTPQyYavj0FfU1VqA7YT1MNGXbqJCUdtioNnMEJkrnPVWY5GrWVhg5Q%0D%0AY4skEtzxQH7dUZD54JovYsYlmcuB6HjmPKonCy0Ug%2FvO6%2BR3ubslzFFQIo1WCCW7QuwDMp97oBXsbOhv%0D%0A0kxHS6yHSUoujMb8a%2BVqhehxsqPbsrB8YAvvUCSql3xnGKqbD3%2Bark1yr10YUlqbQFdq4qQcpKIvg9Fg%0D%0AWa6n%2BA%3D%3D', null],
+
+					
+					
+			
+					[{"id":81},'Forex Rates','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVECigYotxiBLcXgwcoxoHfUEHn2HlSkcWH1ulHG1zm205h%2BcWurPPPA%3D%3D', null],
+				
+			 
+			
+			  
+	
+	
+
+
+      
+
+  			 
+
+					[{"id":10},'My Approval Queue','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YodESgi5ftddiwXrVRYNo2Y0bFBIryLAWxs9TVyjHHE6ljkehqgi1Z6cZTQxGKKVoQVq%0D%0AJ7Y4Qa%2BkES31RYXH5oIlM6QVgM%2Ba7juDM7AcbRUB39Dz3qFCoKQ5s11QNb1oDDe7dMwLKZpcmjXaS9NY%0D%0A2XV5JqqMTCsmz9r4bvlJwsxbzNG8sKd2cxHofR61lmpnesm9ODiAr01%2FqFUUSGeNXmZgr5EizfgvuPtx%0D%0AVI7J7o5v1SHyXNor', null],
+
+					
+				
+
+					[{"id":11},'My Repair Queue','BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqdFCi26WtdTkxPIXhBRlC0RW0FKpy7Eb1MBHmr5L2Y6sCIanvBGqvGheCEqDYKClBM5%0D%0AQ90ID4i1D2zAUKHN58kJJqQKkN3P2Xi2PK0xCygTh%2BDYrO9mvKQbjX9bedUCBCesTvAeQK9lrBK4PLpM%0D%0A6UZEP5z%2BKg%3D%3D', null],
+
+					
+
+
+
+
+
+	
+	
+	
+
+
+
+
+
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+	
+      
+      	
+			
+
+
+
+		          
+
+
+
+
+
+
+		];
+	    try
+		{
+		    var tree = new COOLjsTree("tree1", TREE1_NODES, TREE1_FORMAT);
+		}
+		catch(err)
+		{
+			//alert(err);
+		} 
+		
+		
+		var strNodeVal=null
+		if(strNodeVal!=null){
+//			alert("If loop");
+//			alert(strNodeVal);
+			CTExpandAll("tree1", strNodeVal);
+		}
+		else{
+//			alert("else loop");
+			strNodeVal = null
+//			alert(strNodeVal);
+			CTExpandAll("tree1",strNodeVal)
+		}
+		
+	
+	
+		</script><div id="clstree1_backc" style="position:absolute;z-index:0;top:0px;left:0px;">&nbsp;<span style="font-size:7px;color:#d0d0d0;"></span></div><div id="clstree1_back" style="position: absolute; z-index: 0; top: 0px; left: 0px; width: 0px; height: 0px;"></div><li id="setfirstlink"><ul style="display:none"></ul><a id="firstparent2" class="trigger" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnEm7RdmQU3RpC0t9AzwZaqo9ZoLjzNDPA0ef%2F6DS%2BSUH5oE6g8EP8suVZhU%2FL4NSx7xA%0D%0Av%2Br9FahfwSOkkV6E%2BW3x1U5DnHL3v5%2BGTwSSUgclFUBTrvHbLfasWglntGGFNQPWQgpq5CnVhn7kwuaq%0D%0AzWiRgMgPvrQR5aMFonv83pfpmcBb5EybI4ueTrzh0F7SzvOWOyWJhbzK4%2BixwBS0T0klouIK7h48u1IW%0D%0A%2BiAtXRXbjqGCkggv6HoQbbEosrEfCRen00yylt8N6GiM3j1fSFUzUsEnTN7LaicrKL1KEbkw7TLiOpCD%0D%0Apwg0AIxkluWZqrrIYVyVceJqyB6ztZuDmlI%3D">Accounts Overview</a></li><li><a id="parent0" href="#" class="trigger" title="" style="display: block;">Savings / Current Account</a><ul style="display: none;"><li class="last child last-child"><a id="child1" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnEm7RdmQU3RNTHl7MyYBab8casHPzsHZS3DN%2F6He5jAh7d0NmPRA%2FcOQZQE2ZsE98PUQ%0D%0A6%2F%2FKBKZEkg72iU2Cq1feh3tjijyyzZeISVa%2BGhIyD1VF4Orje9W2FUo1tHCGBEf%2FAVY5tmrVnE74%2Fuq3%0D%0Am2X1gMcNv6IasbE%2FvyvNkZfrhodL%2BUGRAcK5S%2BfMw1%2FS1PmcdWKuj%2FXq%2BOir1iGvVR0FvKcx4Qw6v1pX%0D%0AzyohXEb8lLvQuCYYyW8Ld%2BUfuKYJPxa3mwaIoOhonWmT0jJeUBAEdO0NWcTPZiJ%2FeoJmDLActFyX&amp;Xo6A2E4nKTVQtrZOVEMr=1" target="">Account Summary</a></li><li class="last child last-child"><a id="child2" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnEm7RdmQU3RNTGltNTsNVK4jes%2FWxtzOWHieyafGxzAU69kOwMMSofnVbAY3f%2FMX96dU%0D%0Ao%2BroBL1YihP2iQC%2BsG3sxE9Lmyyp7JCRZQWDWQtsXBZX8N31ft6xWQ92knHVYBjuBwhm8iLSgVPt176W%0D%0AsX7DmcU%2Fo6Iy8KgQtn%2BkxYL9m7Va7mWXAaOdUbyFxUrd8%2BKQcxCfj8jn4ezi8VOjQ04ZvqEN7zc1nUcZ%0D%0A%2FXRkR0v8s7qVkzo0%2F1oncegMo%2B80Wiygm0mdidtK3XKTgDFCXwcYbvYOeYDmJRctLqlAGuBl&amp;Xo6A2E4nKTVQtrZOVEMr=2" target="">View / Download Account Statement</a></li></ul></li><li><a id="parent3" href="#" class="trigger" title="" style="display: block;">Trade Services and Credit Facilities</a><ul style="display: none;"><li id="parentLevel1"><a id="parent4" class="bor_top trigger" href="#" title="" style="display: block;">Credit Facilities</a><ul class="bor_bot" style="display: none;"><li class="last child last-child"><a id="child5" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtIUp9NCAAQaosdsDL28qONUaF2LzR4SFIxpoixtkP6smHcyAhYtdJ145w%0D%0Ai7j6E6hDiC7wkVPazz7yz0hDnHKK1Kq2CjmCXxY4HERw4dH3XN%2B3Qzx%2Fj3%2FVHhjuBwhs9D%2FyjFr4wb7%2F%0D%0AuTbelcINpaQr6b5smFncp7%2FR05VB6U2yBoybGNXR0FbWgNaadSWJgvm%2BwuytxRy0XlNshawq9BEyvVoj%0D%0A9id%2FcEH3hKGC2y867kcEavgAtKFWPzaQunq4kdNb0mmY8DNJVE4zT8Y3K8nNYj8xPad9F7I7hBjXDaaY%0D%0A9Tw6HJJMkazA&amp;Xo6A2E4nKTVQtrZOVEMr=5" target="">Query on facilities</a></li><li class="last child last-child"><a id="child6" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtIUp9NCAAQaosdsDL28qONUaF2LzR4SFIxpoixtkP6smHcyAhYtdJ145y%0D%0Ai7j6E6hDiC7wkVPazz7yz0hDnHKK1Kq2CjmCXxY4HERw4dH3XN%2B3Qzx%2Fj3%2FVHhjuBwhs9D%2FyjFr4wb7%2F%0D%0AuTbelcINpaQr6b5smFncp7%2FR05VB6U2yBoybGNXR0FbWgNaadSWJgvm%2BwuytxRy0XlNshawq9BEyvVoj%0D%0A9id%2FcEH3hKGC2y867kcEavgAtKFWPzaQunq4kdNb0mmY8DNJVE4zT8Y3K8nNYj8xPad9F7I7hBjXDaaY%0D%0A9Tw6HJJMkazA&amp;Xo6A2E4nKTVQtrZOVEMr=6" target="">Snapshot of facilities</a></li></ul></li><li id="parentLevel1"><a id="parent7" class="bor_top trigger" href="#" title="" style="display: block;">Documentary Credits</a><ul class="bor_bot" style="display: none;"><li class="last child last-child"><a id="child8" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtK1VoPzsAKYggcdjLwcbFS3DN7bbL%2FTIc68U33N0Doem3SVIMdNsa3awc%0D%0A%2FLj6E6hDiC7wkVPazz7%2Bwl5vizyS4I6AX1bXGjo%2FBURf8sr%2FX8irFTtfpVq8dkr9BQV65i%2FSnEXz5vqp%0D%0AlSuKiMYc97IW9bUdsmXy3qL3lIJNrW6XAYOeRuSD4lfB1vmQfjfBqPL35eC%2BxxCDQ053ha8z7wonuhk0%0D%0AwQoGclDmib6fjxAY4koNPsUkgYZWOhahk3K%2F2Io%3D&amp;Xo6A2E4nKTVQtrZOVEMr=8" target="">Imports Documentary Credits</a></li><li class="last child last-child"><a id="child9" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnFy%2BT9jLaUZtJ0BoPzsAKYggcdjLwcbFS3DN7bbL%2FTIc68U33N0DoeW3SVIMdNsa3awc%0D%0A%2F7j6E6hDiC7wkVPazz7%2Bwl5vizyS4I6AX1bXGjo%2FBURf8sr%2FX8irFT9LsEe6BBj7Fgpn9C3FgUPy3Neg%0D%0AgD3E3M4UoecM%2BLQ0l2L3iMvRh4dM6Ai4BoyRS%2BLGkWHW0uaaeCGUx9Xw%2BP220gGyb1gk8Yc78BchvUxR%0D%0AzQYBd3LxlKGAkh0izkEMZrEsiYIkWj%2B8jFaSgYcd&amp;Xo6A2E4nKTVQtrZOVEMr=9" target="">Export Documentary Credits</a></li><li class="last child last-child"><a id="child10" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtj8MDcMjEkDlXfZ%0D%0A9m923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69YxYPAyIi%2FO5WhSRo87xedfMDDNuu%0D%0AsesrSJYqfKqBGgT7bZCAggDKj4E0C5cE46KEY%2BxK4rg13x%2FFAFSBLLr4lefbAeM0Hn7Xm20JPolmxUVN%0D%0AVzFsZ8IG%2B7PZZWGQJ%2Bv6FxWm8v%2BsZkXTvWTnn5RHKMtVh%2BU%3D&amp;Xo6A2E4nKTVQtrZOVEMr=10" target="">Domestic Outward Documentary Credits</a></li><li class="last child last-child"><a id="child11" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtj6MDcMjEkDlXfZ%0D%0A9m923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69YxYPAyIi%2FO5WhSRo87xedfMDDNuu%0D%0AsesrSJYqfKqBGgT7bZCAggDKj4E0C5cE46KEY%2BxK4rg13x%2FFAFSBLLr4lefbAeM0Hn7Xm20JPolmxUVN%0D%0AVzFsZ8IG%2B7PZZWGQJ%2Bv6FxWm8v%2BsZkXTvWTnn5RHKMtVh%2BU%3D&amp;Xo6A2E4nKTVQtrZOVEMr=11" target="">Domestic Inward Documentary Credits</a></li></ul></li><li id="parentLevel1"><a id="parent12" class="bor_top trigger" href="#" title="" style="display: block;">Bills</a><ul class="bor_bot" style="display: none;"><li class="last child last-child"><a id="child13" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26sQUWeHudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtXxPzcMjEkDlXfZ%0D%0A9G923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69Yx4NCjE4nrxQlit14b5JaPUCNvan%0D%0ApP1lHJI0Nv%2BbFwXSSJeF1GnsnIQ1TvEr5K2LbuoPkY4i2wDPBkLUQ53%2FiPrTFPIFMmiE70kXPZp80kNa%0D%0AahNMQ4cx3Yb0UHunIfn2XiWozc%2FvHWPvnGml5Ms%3D&amp;Xo6A2E4nKTVQtrZOVEMr=13" target="">Imports Bills</a></li><li class="last child last-child"><a id="child14" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f174QUWeHudsmBt18JZ0aGKUL62qwLL6UF0iPH8CKYtnxPzcMjEkDlXfZ%0D%0A92923duPz1oHmXoNXQ11AdGAbT9TRYZJu79bedBTdBv3gNGKwK69YxoZHyw%2B7O5WhSRo87xedfMDDNuu%0D%0AsesrSJo8YKqBGgT7bZCAggDKj4E0C5cE46KEY%2BxK4rg13x%2FFAFSBLLr4lefbAeM0Hn7Xm2EfIod61RY%2F%0D%0AZh9LRqUmwJnrTXadDfL3BlGgxcudfUryg02IvcYF&amp;Xo6A2E4nKTVQtrZOVEMr=14" target="">Export Bills</a></li><li class="last child last-child"><a id="child15" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL6GCoKbupGkG%2BW%2F%2FJHv%2FHGmcxnlk5pWOB%0D%0A%2BAZn5Zyp3WcbsXANNw1HFtOXahh1XZgRkaQKPPpYbhzKmNWK5%2BvjeBYvJhcF2bxHoz1ovZRzTdsiJqmj%0D%0As%2B82Bp4nZOWdHTTnUZyd1FTwkcYjB9MnxqWLZrJ7sIo0yEnqCl%2BTZJDz3MDXEuE4KWPKgG0JO5xhwBF8%0D%0AcShmP60r2JHzQCKwPPz3Bkqm0tiNGm%2FpmFaorYJ2KuZUh5zRp49R85Hh7XVOE6A%3D&amp;Xo6A2E4nKTVQtrZOVEMr=15" target="">Domestic Outward Bills</a></li><li class="last child last-child"><a id="child16" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99FY1f26gMX3uXudsmBt18JZ0aGKUL6GCoKbupGkG%2BW%2FnJHv%2FHGmcxnlk5pWOB%0D%0A%2BAts5Zyp3WcbsXANNw1HFtOXahh1XZgRkaQKPPpYbhzKmNWK5%2BvjeBYvJhcF2bxHoz1ovZRzTdsiJqmj%0D%0As%2B82Bp4nZOWdHTTnUZyd1FTwkcYjB9MnxqWLZrJ7sIo0yEnqCl%2BTZJDz3MDXEuE4KWPKgG0JO5xhwBF8%0D%0AcShmP60r2JHzQCKwPPz3Bkqm0tiNGm%2FpmFaorYJ2KuZUh5zRp49R85Hh7XVOE6A%3D&amp;Xo6A2E4nKTVQtrZOVEMr=16" target="">Domestic Inward Bills</a></li><li class="last child last-child"><a id="child17" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG91LCD99MalovIQJUnm%2F%2Fus9VfAzOIEbQLBExGL5EbqcB1T7INmBPvLQFjELj1IbtXCB%0D%0Atm9jxsiQ8mpIyA%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=17" target="">View Purchase Bills</a></li></ul></li><li id="parentLevel1"><a id="parent18" class="bor_top trigger" href="#" title="" style="display: block;">Loans</a><ul class="bor_bot" style="display: none;"><li class="last child last-child"><a id="child19" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG%2F1LCD99Eapv%2Ba8OWVaB8vwgHNo7GY0LV5VI3Gz5HO6eD16oA9SpM%2F3UTkh%2BmFUDsnqK%0D%0AogZXzd%2BP%2FWIUnylpIkp3AcambCJTRYZJ9cslDb9Rcgz%2FlcyA%2BqWfNyw1ciIA1O5XhCB0wb5ebu8CFsa5%0D%0ApesgSM9ice%2BRHBXwVYqnjQCv24EzDdg35LiRdP9K%2F6QRiwjPAFSBeafvjPbBXad3Hn7X8l0XN9U4kENt%0D%0AVzFmcYUmwJnySladPvjgXkqj8umkEmigwQ%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=19" target="">Exports Loans</a></li><li class="last child last-child"><a id="child20" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG8VCAD8SIqhj56gUTTuy9PsmHcdhGJ0SSJ1f0zSdY5uJAkOvMsKOMaHqVXA7iU8YsmeX%0D%0AjC0Ympyc2G0ajXpEcFJkB4%2BpX2pBVYRfvNYCMvwAREn%2FgsaK56WHJy8kPF5cnpxamRF%2F8LgAMatKEeaz%0D%0ApMIxG5R5Uu2eEg79RNmPh1m%2BqZIxAMQj6biMYuEPi4U2whvBAkWbZZ2wtf3bFP4wPmPt3kpaHodpz0VY%0D%0ARjNnd4oxx9bea0GgD%2F7nChqM6eKKNGj4zHOEi74TMfBQ1Kb%2BiL8e2pDH%2BUxPXa3Urezt3xJsRbg%3D&amp;Xo6A2E4nKTVQtrZOVEMr=20" target="">Commercial Loans</a></li></ul></li></ul></li><li><a id="parent21" href="#" class="trigger" title="" style="display: block;">Deposits</a><ul style="display: none;"><li class="last child last-child"><a id="child22" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG8BDFzQgNaZp%2FLIhXXac4vY9G4dUKIsQUJJZ%2BXypKKmPGgyCQOObPu7HJ2M5hB00%2Bn%2BN%0D%0AqyJx0MqYhl0AlXlRdlIyA9GGcTlpSIVlrL9ZefhefgDrj9Gb7aa2YxYAaSUFyrtWoyxr5eBkJ%2FsPAeqk%0D%0AstohBZo3LbzUJxjwdYCejACuzMYjB9MnxqWLZrJto4cxwwrJQ1CcbtPCjvLcE%2FYyPm%2FWyAQuPI5n0wh4%0D%0AUTlnbMIM2pnpTWOQK8nrDVGh%2BOumKGXp0WGiupRAK%2FZCnJbQqI821or69lVeV9Odj%2Bai4R5aPa5ngzhT%0D%0ASxbWZBWmmXSVTVehwERbA2mT5q%2B1pw%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=22" target="">Deposit Summary</a></li><li class="last child last-child"><a id="child23" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc13IpkzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=23" target="">Regularize RD</a></li><li class="last child last-child"><a id="child24" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12YpnjWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=24" target="">Premature Withdrawal of Deposit</a></li><li class="last child last-child"><a id="child25" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12wsnzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Op%2B6S%2BFzt8fw%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=25" target="">Link a Fixed Deposit to Savings /Current Account</a></li><li class="last child last-child"><a id="child26" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNaToG9tIECQ2Mr9%2FvJUVXHia47YHDd5GPooSTIh%2Fz3ixILuJXmj9FNWeKvnAB1gc12QsnzWC%0D%0AqShClIvb0mARnWwNNA19DNGJayhiAbgKnPoFC%2BBNeFKu04Or8aa8LTY1Gxoc3ZtHmyBl9OBpRbwqDf26%0D%0AiOplRQ%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=26" target="">Delink a Fixed Deposit from Savings /Current Account</a></li><li class="last child last-child"><a id="child27" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVFTysfdFB0zPbWQ8WrmYobFNpsyXbV1I2Dn6iGHA6%2FxJZmvAKhrKBeAkcRJC0p1ti%0D%0AdpomXNDnD2PQUI2IudItMecogM6KtlPgCbwtfwAWh6iNuKFFv6YmpXwDdA%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=27" target="">Change Maturity Instruction for Fixed Deposit</a></li><li class="last child last-child"><a id="child28" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqBTBya8YNFB0ynATwcNvzsSQEpLsy7ER2UWAnuyD2ov%2FxJZrvoJnp6WMXA%3D&amp;Xo6A2E4nKTVQtrZOVEMr=28" target="">Deposit Calculator</a></li></ul></li><li><a id="parent29" href="#" class="trigger" title="" style="display: block;">Transfers and Payments</a><ul style="display: none;"><li class="last child last-child"><a id="child30" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnScBGrQXAXwsRvRwUaEpJpyTCV0kKGDKOW1A6ozkLvOcaneqrKjMxHbO8nBNv%0D%0AJ68zAI%2ByAGjGRtXU55BkD%2BU9mM%2BB%2F27gFKoqXxAHlvDp8uk%2BhKYqgmtYIZBXRSWhT6M9da94rA%2Fxfrpr%0D%0A5VdMBYuXYxoPmo%2BsJM920cZ3ldqq&amp;Xo6A2E4nKTVQtrZOVEMr=30" target="">Transfers and Payments Overview</a></li><li class="last child last-child"><a id="child31" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnQ8RZmCH6SQMRqSkFfU1VqHrvGHUQCn2jKXEvrHYmztwVmqObbTQ9La6eyDBl%0D%0AcZ5hIMGVFGzaRpTW%2FZ0rMaIskMaf23yhOPlyDT8JkPj07roz&amp;Xo6A2E4nKTVQtrZOVEMr=31" target="">Make A Transfer</a></li><li class="last child last-child"><a id="child32" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrVCBSe6b8ZGlA%2FASEw8mAVIT0FOpS%2F0W0gNDWa0FGI8u3YmzsYPkqWGWDI5F%2Bup0ztr%0D%0AaJYIBdzx&amp;Xo6A2E4nKTVQtrZOVEMr=32" target="">Add / Manage Beneficiaries</a></li><li class="last child last-child"><a id="child33" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVECigYotimA7KUgwYjjoHZ1dbpTPfUUgXVlbxLncvsD8rmvQVzo7URS4xDb%2BRgRhQ%0D%0AYpV8NZOgCH7VVoHc5ppkD%2BEqkcOB7D2xNLArCzsHjP6b4uJvoIQqi30DcMRiCjaiYudQJA%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=33" target="">View / Manage Standing Instructions</a></li><li class="last child last-child"><a id="child34" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrVCBSe6b8ZGlA%2FASEwsuz4DbXBIpynFWEMWRV6iGHE3%2FxJZu%2BEagaOmfiE2RI%2FWvBNt%0D%0AbpIgFYSVHmOJY5zQ%2FtQXPvIhkYq7%2BXyoLqUgXxAJjOab4uJvoIQqi30DdsRFBieqWPA5baZwuly0K9pl%0D%0A9FlgEsXz&amp;Xo6A2E4nKTVQtrZOVEMr=34" target="">Saved Transfers</a></li><li class="last child last-child"><a id="child35" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YoRZFDnnTcpfjQzLTwcbiTwHfVFJgynHS08WEjKOW1A6ozkLvOcaneqrKgk2EKKZlAlh%0D%0AToMvXLeoA3qUdprY%2BZghK%2BEg1f6d6nO1PKc3QhYIkbPV7%2BtzgLUsiSUKYoNHBiG8WNcUZLNm9FCjS%2B5l%0D%0A63dGG4ivfx4PjY%2FEJM920cZ3ldqq&amp;Xo6A2E4nKTVQtrZOVEMr=35" target="">Completed Transfers</a></li><li class="last child last-child"><a id="child36" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqdFCi26WtdTkxPIXhBRjyYHeVRIqTHTWmAwOGylGGYgjC4I1cxdoKOTfjQMC7eeyCQi%0D%0AXp4tPqetATD6E7Db%2FasCM%2BN5sOS7rU2jM6AqRR4nkuXP5fFivKd2oj5fJ4FBFjebUvMIZ%2Bsk7yjrZOhj%0D%0A50BMIoCtJycTyfz4dalPys5J0bL0sLRlZA3tTAPlp2s7JZyoKS2Hs0Jv%2BnoUVF69Sj4j&amp;Xo6A2E4nKTVQtrZOVEMr=36" target="">Unapproved Transactions</a></li><li class="last child last-child"><a id="child37" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YodESgi5ftddiwXrVRYNo2Y0bFBIryLAWxs9TVyjHHE6ljkehqgi1Z6cZTQxGKKVoQVq%0D%0AJ7Y4Qa%2BkES31RYXH5oIlM6QVgM%2Ba7juDM7AcbRUB39Dz3qFCoKQ5s11QNb1oDDe7dMwLKZpcmjXaS9NY%0D%0A2XV5JqqMTCsmz9r4bvlJwsxbzNG8sKd2cxHofR61lmpnesm9ODiAr01%2FqFUUSGeNXmZgr5EizfgvuPtx%0D%0AVI7J7o5v1SHyXNor&amp;Xo6A2E4nKTVQtrZOVEMr=37" target="">My Approval Queue</a></li><li class="last child last-child"><a id="child38" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqdFCi26WtdTkxPIXhBRlC0RW0FKpy7Eb1MBHmr5L2Y6sCIanvBGqvGheCEqDYKClBM5%0D%0AQ90ID4i1D2zAUKHN58kJJqQKkN3P2Xi2PK0xCygTh%2BDYrO9mvKQbjX9bedUCBCesTvAeQK9lrBK4PLpM%0D%0A6UZEP5z%2BKg%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=38" target="">My Repair Queue</a></li></ul></li><li><a id="parent39" href="../../../j1001dc/KotakCard/login.do?dc=ov&amp;Xo6A2E4nKTVQtrZOVEMr=39" target="" class="parenttrigger" title="" style="display: block;">Debit Cards</a><ul style="display: none;"></ul></li><li><a id="parent40" href="#" class="trigger" title="" style="display: block;">Service Requests</a><ul style="display: none;"><li class="last child last-child"><a id="child41" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnXdBQkAnaaQcOry0VfRlj4BTCX1QQP322Ez4X5CocofFGwfGTbzQMAKaVyDAi%0D%0Ad5U0KIX8KkL3dLbhr4ctO%2BEInMSEtlqjM6ExShVGsfDP%2FO5gtadtpXZXMItFESGbU%2B1QR7NnvwjmaLxY%0D%0A40VcE4u3PCklqvbcYf1w1cJKiKT1taEoRSfJbEGEkG0zPYa9Mw2XrEkhknkpYxWVTWB24bI74PQMn54r%0D%0AZLj7prthxDjSV4lP2EL%2FcfKQdQO1NHcyOO0%3D&amp;Xo6A2E4nKTVQtrZOVEMr=41" target="">New Service Request</a></li><li class="last child last-child"><a id="child42" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqJfFjnnXdBQkAnaaQcOry0VfRlj4AbVSk8SAnuuKXo%2Bp3YuvdAp1ZGdfi0RHevA&amp;Xo6A2E4nKTVQtrZOVEMr=42" target="">Service Requests History</a></li></ul></li><li><a id="parent43" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqBTBya8YNFB0zTPQyYavj0FfU1VqA7YT1MNGXbqJCUdtioNnMEJkrnPVWY5GrWVhg5Q%0D%0AY4skEtzxQH7dUZD54JovYsYlmcuB6HjmPKonCy0Ug%2FvO6%2BR3ubslzFFQIo1WCCW7QuwDMp97oBXsbOhv%0D%0A0kxHS6yHSUoujMb8a%2BVqhehxsqPbsrB8YAvvUCSql3xnGKqbD3%2Bark1yr10YUlqbQFdq4qQcpKIvg9Fg%0D%0AWa6n%2BA%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=43" target="" class="parenttrigger" title="" style="display: block;">Tax Details</a><ul style="display: none;"></ul></li><li><a id="parent44" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YrNVECigYotxiBLcXgwcoxoHfUEHn2HlSkcWH1ulHG1zm205h%2BcWurPPPA%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=44" target="" class="parenttrigger" title="" style="display: block;">Forex Rates</a><ul style="display: none;"></ul></li><li><a id="parent45" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YodESgi5ftddiwXrVRYNo2Y0bFBIryLAWxs9TVyjHHE6ljkehqgi1Z6cZTQxGKKVoQVq%0D%0AJ7Y4Qa%2BkES31RYXH5oIlM6QVgM%2Ba7juDM7AcbRUB39Dz3qFCoKQ5s11QNb1oDDe7dMwLKZpcmjXaS9NY%0D%0A2XV5JqqMTCsmz9r4bvlJwsxbzNG8sKd2cxHofR61lmpnesm9ODiAr01%2FqFUUSGeNXmZgr5EizfgvuPtx%0D%0AVI7J7o5v1SHyXNor&amp;Xo6A2E4nKTVQtrZOVEMr=45" target="" class="parenttrigger" title="" style="display: block;">My Approval Queue</a><ul style="display: none;"></ul></li><li><a id="parent46" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=bR%2BKNZ40YqdFCi26WtdTkxPIXhBRlC0RW0FKpy7Eb1MBHmr5L2Y6sCIanvBGqvGheCEqDYKClBM5%0D%0AQ90ID4i1D2zAUKHN58kJJqQKkN3P2Xi2PK0xCygTh%2BDYrO9mvKQbjX9bedUCBCesTvAeQK9lrBK4PLpM%0D%0A6UZEP5z%2BKg%3D%3D&amp;Xo6A2E4nKTVQtrZOVEMr=46" target="" class="parenttrigger" title="" style="display: block;">My Repair Queue</a><ul style="display: none;">
+
+</ul>
+</li></form></ul></div>
+</div>
+</div>
+
+<div class="rhs">
+<form action="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=rxOMMbhSjzg%3D" method="POST" name="QuerySelection" onsubmit="javascript:checkOnLoad();">
+<input type="hidden" name="ReportName" value="FullStatementRpt" tabindex="2">
+<input type="hidden" name="flagGenReport" value="Y" tabindex="3">
+<input type="hidden" name="flagBeanPopulation" value="Y" tabindex="4">
+<input type="HIDDEN" name="outPutFormat" id="outPutFormat" value="" tabindex="5">
+<input type="HIDDEN" name="actionSwitch" id="actionSwitch" value="N" tabindex="6">
+
+
+<input type="hidden" name="portletName" value="" tabindex="7">
+<input type="hidden" name="txnSrcNoOfTxns" size="5" maxlength="14" value="0" tabindex="8">
+<input type="hidden" name="accountquery" value="0" tabindex="9">
+<input type="hidden" name="MaintainState" value="0" tabindex="10">
+<h2>View / Download Account Statement.</h2>
+<div class="box_drop">
+<div class="fLeft txt">Select Account:</div>
+<div class="box_drop selectArea_type12">
+<div class="fLeft txt"></div>
+<div class="fLeft">
+<div class="selectArea custom-select" id="sarea0"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText0" class="center">GSX SOLUTIONS PRIVATE LIMITED(9049183873) &nbsp;</span><a onfocus="javascript:onAnchorActivate();" href="javascript:showOptions(0,1)" class="selectButton" id="selectButton0" tabindex="11"></a></div><select class="custom-select outtaHere" name="userAccountIndex" tabindex="12" onfocus="javascript:setFocusOnAnchor('selectButton0');" id="selectList0">
+<option value="0" selected="">
+GSX SOLUTIONS PRIVATE LIMITED(9049183873)
+&nbsp;
+</option>
+<option value="1">
+GSX SOLUTIONS PRIVATE LIMITED(9049336248)
+&nbsp;
+</option>
+<option value="2">
+GSX SOLUTIONS PRIVATE LIMITED(9049336255)
+&nbsp;
+</option>
+<option value="3">
+GSX SOLUTIONS PRIVATE LIMITED(9049336262)
+&nbsp;
+</option>
+<option value="4">
+GSX SOLUTIONS PRIVATE LIMITED(9049336279)
+&nbsp;
+</option>
+<option value="5">
+GSX SOLUTIONS PRIVATE LIMITED(9049336286)
+&nbsp;
+</option>
+</select>
+</div>
+<div class="button_01 fLeft">
+<input type="submit" name="Action.Accounts.QuerySelection.QueryStatement" class="input_btn" value="Go" id="IdGo" tabindex="13">
+</div>
+</div>
+</div>
+
+
+
+<br>
+
+
+<h3>Download Yearly Statements (PDF/CSV format)</h3>
+
+<table>
+<tbody><tr><td><div class="radioArea" id="myRadio0"></div><input type="radio" name="radgroup" id="r1" value="Last Calendar Year" style="margin-right: 0" tabindex="14" class=" outtaHere"></td><td valign="middle" style="padding-right: 5px;"><strong>Last Calendar Year</strong></td>
+<td><div class="radioArea" id="myRadio1"></div><input type="radio" name="radgroup" id="r2" value="Current Calendar Year" style="margin-right: 0" tabindex="15" class=" outtaHere"></td><td valign="middle" style="padding-right: 5px;"><strong>Current Calendar Year</strong></td>
+<td><div class="radioArea" id="myRadio2"></div><input type="radio" name="radgroup" id="r3" value="Last Financial Year" style="margin-right: 0" tabindex="16" class=" outtaHere"></td><td valign="middle" style="padding-right: 5px;"><strong>Last Financial Year</strong></td>
+<td><div class="radioAreaChecked" id="myRadio3"></div><input type="radio" name="radgroup" id="r4" value="Current Financial Year" style="margin-right: 0" checked="" tabindex="17" class=" outtaHere"></td><td valign="middle" style="padding-right: 20px;"><strong>Current Financial Year</strong></td>
+
+
+<td><div class="button_01 fLeft"><input type="button" class="input_btn" onclick="downloadYearlyReport();" value="CSV" tabindex="18"></div></td>
+
+
+<td><div class="button_01 fLeft"><input type="button" class="input_btn" onclick="downloadYearlyReportPDF();" value="PDF" tabindex="19"></div></td>
+
+</tr></tbody></table>
+<div class="tabular_data">
+<h4>Search Transactions :</h4>
+
+<h3><i> To receive statement for longer period (starting from September 2011) on email or physical, click <a href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5YnCTfTcCzFUgHNybvSyeVA6t6K2pjVnbRIHjcop2S8w6c3XYCBTx2PBprFCgcMCWa%2F%2FVp%0D%0AQY06s3S%2BEzwS7zxa%2FysGUZgYXEBvs5DBiQyu%2Bc9Uu5hP" class="infolinks"><font color="black"><u>here</u></font></a></i></h3>
+
+<div class="box_search">
+<div class="bs_row">
+<div class="c1">Time Period </div>
+<div class="c2 relative">
+<div class="fLeft">
+<div class="date_pic_box date_pic_boxMoreOptions">
+<span>
+<input type="text" id="frmDt" class="watermarkOn" name="txnSrcFromDate" onblur="return validatedate();" onfocus="javascript:if($(this).val()=='dd/mm/yyyy'){$(this).val('')};" value="dd/mm/yyyy" tabindex="20">
+<a class="calender_icon" href="javascript:void(0);" onclick="javascript:showCal('CalendarInitSearchAccount',event.screenX,event.screenY);"></a>
+</span>
+</div>
+<div class="fLeft txt">To:</div>
+<div class="date_pic_box date_pic_boxMoreOptions">
+<span>
+<input type="text" id="toDt" class="watermarkOn" name="txnSrcToDate" onblur="return validatedate();" onfocus="javascript:if($(this).val()=='dd/mm/yyyy'){$(this).val('')};" value="dd/mm/yyyy" tabindex="21">
+<a class="calender_icon" href="javascript:void(0);" onclick="javascript:showCal('CalendarfrmCrpQrySelTxnRangeToDt',event.screenX,event.screenY)"></a>
+</span>
+</div>
+<div class="button_03" id="GoButton1">
+
+<input type="submit" name="Action.Accounts.QuerySelection.QueryStatement" class="input_btn" value="Go" id="IdGo" tabindex="22">
+</div>
+<div class="fLeft" id="AllLinks">
+
+<a href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udVA3Q1%2BwHeB3Mizz6PNCy3VP0sp%2BbXN77ewNBtMqyZHItP0x%0D%0ApI5C8Vh0" class="boxLinks">Today</a> ,
+<a href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUg5VEqGANZOPDbi7cVY3jxzmc5zeiFXpfkfENkt3tiJ594s%0D%0Ar947syMrk9fP00Xl" class="boxLinks">Last month</a>,
+<a href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1iE4FhKtKFE81avk08udUg5VEqYG9JxJz3k1uJNyy17kcVpM0Uo4vsfHMM2xN2N98kn%0D%0A69Mt0wo2jPPiikg%3D" class="boxLinks">Last Quarter</a>
+</div>
+</div>
+<a href="#" class="button_options" id="optionButton">More Options</a>
+</div>
+</div>
+<div id="optionBox" style="display: none;">
+<div class="bs_row">
+<div class="c1">Amount Range</div>
+<div class="c2">
+<div class="fLeft">
+<input type="text" id="txnSrcMinAmt" onkeypress="return numeralsOnly(event);" onkeyup="return setAmount(event,this.id);" onblur="appendDecmals(this.value,this.name);" class="input type03" name="txnSrcMinAmt" maxlength="13" value="" tabindex="23">
+<div class="fLeft txt">To:</div>
+<input type="text" id="txnSrcMaxAmt" onkeypress="return numeralsOnly(event);" onkeyup="return setAmount(event,this.id);" onblur="appendDecmals(this.value,this.name);" class="input type03" name="txnSrcMaxAmt" maxlength="13" value="" tabindex="24">
+</div>
+</div>
+</div>
+<div class="bs_row">
+<div class="c1">Cheque number </div>
+<div class="c2">
+<div class="fLeft">
+<input type="TEXT" name="txnSrchBeginChkNo" maxlength="6" value="" class="input type03" size="25" tabindex="25">
+<div class="fLeft txt">To:</div>
+
+<input type="TEXT" name="txnSrchEndChkNo" maxlength="6" value="" class="input type03" size="25" tabindex="26">
+</div>
+</div>
+</div>
+<div class="bs_row">
+<div class="c1">Transaction Type</div>
+<div class="c2">
+<div class="checkbox negative">
+<div class="radioArea" id="myRadio4"></div><input type="radio" name="txnSrchTxnType" id="radio2" value="D" tabindex="27" class=" outtaHere">
+Debits (-)</div>
+<div class="checkbox"><div class="radioArea" id="myRadio5"></div><input type="radio" name="txnSrchTxnType" id="radio2" value="C" tabindex="28" class=" outtaHere">
+Credits (+)</div>
+<div class="checkbox "><div class="radioAreaChecked" id="myRadio6"></div><input type="radio" name="txnSrchTxnType" id="radio2" value="B" checked="checked" tabindex="29" class=" outtaHere">
+Both-Debit/Credit </div>
+</div>
+</div>
+<div class="bs_row">
+<div class="c1">Description</div>
+<div class="c2">
+<div class="fLeft">
+<input type="text" name="txnOwnDescription" maxlength="25" value="" class="input type04" size="25" tabindex="30">
+</div>
+</div>
+</div>
+<div class="bs_row">
+<div class="c1">Date Order</div>
+<div class="c2">
+<div class="fLeft">
+<div class="radioArea" id="myRadio7"></div><input type="radio" name="txnSrchSortOrder" id="radio2" value="A" tabindex="31" class=" outtaHere">
+<strong>Ascending</strong> </div>
+<div class="fLeft">
+<div class="radioAreaChecked" id="myRadio8"></div><input type="radio" name="txnSrchSortOrder" id="radio2" value="D" checked="checked" tabindex="32" class=" outtaHere">
+<strong>Descending</strong> </div>
+</div>
+<div class="bs_row spacer">
+<div class="c1"><span class="button_black">OR</span></div>
+<div class="c2">
+<div class="divider03"></div>
+</div>
+</div>
+<div class="bs_row">
+<div class="c1">Number of Transactions </div>
+<div class="c2">
+<div class="fLeft">
+<input type="TEXT" name="txnSrcLatestNoOfTxns" maxlength="9" value="" class="input type06" onkeypress="return dotNotAllow(event);" tabindex="33">
+&nbsp;
+</div>
+</div>
+<div class="clear5"></div>
+</div>
+<div class="bs_row total">
+<div class="c1">&nbsp;</div>
+<div class="c2">
+<div class="button_01">
+
+<input type="submit" name="Action.Accounts.QuerySelection.QueryStatement" class="input_btn" value="Show Transactions" id="IdShowTransactions" tabindex="34">
+</div>
+<select style="visibility:hidden;" id="docType1" tabindex="36">
+</select><input type="hidden" name="Download" class="input_btn" onclick="javaScript:downloadReport();" tabindex="37">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clear5"></div>
+<div id="fullstatementHeader" class="dataGridHead_01">
+<div class="c1">Period: <strong>
+04/06/2024 - 04/09/2024
+</strong></div>
+<div class="c2">
+<div id="opening"> Opening Bal: <strong> 49,069.38</strong><span>(INR)</span></div>
+</div>
+<div class="c3">
+<div id="closing"> Closing Bal: <strong>23,101.48</strong><span>(INR)</span></div>
+</div>
+<div class="c4" id="topRecordsPage">
+<div class="margin-top fLeft"><strong> 1 - 30
+</strong> of &nbsp; <strong>
+195</strong>Records</div>
+</div>
+<div class="clear"></div>
+</div>
+
+<form id="fullstatement" action="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=rxOMMbhSjzg%3D" method="POST" name="FullStatementForm" onsubmit="javaScript:checkOnLoad();">
+<div class="dataGrid col5_01">
+<div class="gridRow rowHead">
+<div class="c1">Date </div>
+<div class="c2">Description</div>
+<div class="c3">Chq / Ref No</div>
+<div class="c4">Amount
+</div>
+<div class="c5">Balance </div>
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/424893348290/6833216626
+</div>
+<div class="c3">
+UPI-424879737684
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+23,101.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/461446388842/1498681263
+</div>
+<div class="c3">
+UPI-424878050996
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+23,091.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+SentIMPS424816111693Narender/ESFBX3887/FOR ADVAN
+</div>
+<div class="c3">
+IMPS-424816439234
+</div>
+<div class="c4 negative">
+-20,000.
+<span>00</span>
+</div>
+<div class="c5">
+23,081.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+Recd:IMPS/424816152965/GSX SOLUTI/KKBK/X3632/MOBTX
+</div>
+<div class="c3">
+IMPS-424816436960
+</div>
+<div class="c4 ">
+25,000.
+<span>00</span>
+</div>
+<div class="c5">
+43,081.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANT CHAKRA/424813899168/Return
+</div>
+<div class="c3">
+UPI-424861543624
+</div>
+<div class="c4 negative">
+-2,005.
+<span>00</span>
+</div>
+<div class="c5">
+18,081.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/461416492041/7180602528
+</div>
+<div class="c3">
+UPI-424861404423
+</div>
+<div class="c4 ">
+2,005.
+<span>00</span>
+</div>
+<div class="c5">
+20,086.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/424848718771/9194547657
+</div>
+<div class="c3">
+UPI-424861305077
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+18,081.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/424808883723/556151352054652
+</div>
+<div class="c3">
+UPI-424861229085
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+18,071.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/424861072098/Paymentfornewor
+</div>
+<div class="c3">
+UPI-424861182524
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+18,061.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/424861051437/Paymentfororder
+</div>
+<div class="c3">
+UPI-424860989383
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+18,051.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+04/09/2024
+</div>
+<div class="c2">
+UPI/TUSHANTCHAKRABO/424815995380/PaymentfromPhon
+</div>
+<div class="c3">
+UPI-424860816855
+</div>
+<div class="c4 ">
+10.
+<span>00</span>
+</div>
+<div class="c5">
+18,041.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+03/09/2024
+</div>
+<div class="c2">
+PCD/9400/ITC MAURYA/NEW DELHI030924/19:54
+</div>
+<div class="c3">
+424714483629
+</div>
+<div class="c4 negative">
+-128,420.
+<span>00</span>
+</div>
+<div class="c5">
+18,031.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+02/09/2024
+</div>
+<div class="c2">
+UPI/Blinkit/424619298508/UPIIntent
+</div>
+<div class="c3">
+UPI-424682964280
+</div>
+<div class="c4 negative">
+-133.
+<span>00</span>
+</div>
+<div class="c5">
+146,451.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+02/09/2024
+</div>
+<div class="c2">
+Recd:IMPS/424617151141/GSX SOLUTI/KKBK/X3632/Inter
+</div>
+<div class="c3">
+IMPS-424617841824
+</div>
+<div class="c4 ">
+75,000.
+<span>00</span>
+</div>
+<div class="c5">
+146,584.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+02/09/2024
+</div>
+<div class="c2">
+UPI/D Brew N Chew/424617023037/NA
+</div>
+<div class="c3">
+UPI-424675663857
+</div>
+<div class="c4 negative">
+-150.
+<span>00</span>
+</div>
+<div class="c5">
+71,584.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+02/09/2024
+</div>
+<div class="c2">
+UPI/Kailasa/424616918277/NA
+</div>
+<div class="c3">
+UPI-424673084443
+</div>
+<div class="c4 negative">
+-20.
+<span>00</span>
+</div>
+<div class="c5">
+71,734.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+02/09/2024
+</div>
+<div class="c2">
+UPI/NAVEEN CHANDRA/424616916368/NA
+</div>
+<div class="c3">
+UPI-424673025609
+</div>
+<div class="c4 negative">
+-780.
+<span>00</span>
+</div>
+<div class="c5">
+71,754.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+02/09/2024
+</div>
+<div class="c2">
+PCD/9400/Raz*Devyani Internatio/Delhi020924/13:48
+</div>
+<div class="c3">
+424608561313
+</div>
+<div class="c4 negative">
+-7,137.
+<span>90</span>
+</div>
+<div class="c5">
+72,534.48
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+01/09/2024
+</div>
+<div class="c2">
+UPI/RAJNISH KUMAR G/424517862424/NA
+</div>
+<div class="c3">
+UPI-424528248628
+</div>
+<div class="c4 negative">
+-2,480.
+<span>00</span>
+</div>
+<div class="c5">
+79,672.38
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+01/09/2024
+</div>
+<div class="c2">
+UPI/RM HYPERMARKET /424516758992/NA
+</div>
+<div class="c3">
+UPI-424525558817
+</div>
+<div class="c4 negative">
+-1,820.
+<span>00</span>
+</div>
+<div class="c5">
+82,152.38
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+01/09/2024
+</div>
+<div class="c2">
+PCI/9400/OPENAI *CHATGPT SUBSCR/+14158010924/14:42
+</div>
+<div class="c3">
+424509121115
+</div>
+<div class="c4 negative">
+-2,062.
+<span>07</span>
+</div>
+<div class="c5">
+83,972.38
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+Chrg: IMPS Transaction Dated On 24-Aug-2024
+</div>
+<div class="c3">
+TBMS-1519152992
+</div>
+<div class="c4 negative">
+-5.
+<span>90</span>
+</div>
+<div class="c5">
+86,034.45
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+UPI/DANISH/424420519001/NA
+</div>
+<div class="c3">
+UPI-424494002105
+</div>
+<div class="c4 negative">
+-11,000.
+<span>00</span>
+</div>
+<div class="c5">
+86,040.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+SentIMPS424419981534Narender/ESFBX3887/FOR OFFIC
+</div>
+<div class="c3">
+IMPS-424419583501
+</div>
+<div class="c4 negative">
+-2,000.
+<span>00</span>
+</div>
+<div class="c5">
+97,040.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+UPI/DANISH/424419237308/NA
+</div>
+<div class="c3">
+UPI-424487590484
+</div>
+<div class="c4 negative">
+-25,000.
+<span>00</span>
+</div>
+<div class="c5">
+99,040.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+SentIMPS424418927373Sachin Kum/IBKLX5193/OFFICE PE
+</div>
+<div class="c3">
+IMPS-424418450752
+</div>
+<div class="c4 negative">
+-1,720.
+<span>00</span>
+</div>
+<div class="c5">
+124,040.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+UPI/VISHWJEET SINGH/424415775808/NA
+</div>
+<div class="c3">
+UPI-424476164518
+</div>
+<div class="c4 negative">
+-848.
+<span>00</span>
+</div>
+<div class="c5">
+125,760.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+UPI/Blinkit/424414754150/Blinkit
+</div>
+<div class="c3">
+UPI-424475672647
+</div>
+<div class="c4 negative">
+-229.
+<span>00</span>
+</div>
+<div class="c5">
+126,608.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowOdd">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+UPI/RazorpayZomato/424414739570/PayviaRazorpay
+</div>
+<div class="c3">
+UPI-424475379575
+</div>
+<div class="c4 negative">
+-998.
+<span>00</span>
+</div>
+<div class="c5">
+126,837.35
+</div>
+&nbsp;
+</div>
+<div class="gridRow rowEven">
+<div class="c1">
+31/08/2024
+</div>
+<div class="c2">
+UPI/TUSHAR THAREJA/424414700494/NA
+</div>
+<div class="c3">
+UPI-424474562663
+</div>
+<div class="c4 negative">
+-750.
+<span>00</span>
+</div>
+<div class="c5">
+127,835.35
+</div>
+&nbsp;
+</div>
+</div>
+<div class="clear"></div>
+<div class="grid_pagenation">
+<div class="c1" id="bottompage">
+<div class="margin-top fLeft"><strong> 1 - 30
+</strong> of &nbsp; <strong>
+195</strong>Records</div>
+</div>
+<script type="text/javascript">
+                       $('#topRecordsPage').html($('#bottompage').html());
+                       </script>
+<div class="c2">
+<div class="button">
+<input name="Action.Next.accountStatement" type="submit" class="input_btn" value=">>" alt="Next" tabindex="38">
+</div>
+</div>
+</div>
+
+<input type="hidden" name="ReportName" value="FullStatementRpt" tabindex="39">
+<input type="hidden" name="flagGenReport" value="Y" tabindex="40">
+<input type="hidden" name="flagBeanPopulation" value="Y" tabindex="41">
+<input type="HIDDEN" name="outPutFormat" id="outPutFormat" value="" tabindex="42">
+<input type="HIDDEN" name="actionSwitch" id="actionSwitch" value="N" tabindex="43">
+
+
+
+<div class="tabular_data">
+<div class="grid_download selectArea_type05">
+<a class="fRight print" href="BANKAWAYTRAN;jsessionid=0000DdQQ0aJBYQP1FR_Gi6zsYVX:1eapibe8h?bwayparam=qB%2BKNZ5wO1mD7ERHrZd41Vi%2Fx3lmKWEsRlenBtJwO2Wno8Ze1iZiyfI7SHN87tEYToY%3D"><strong>Print</strong></a>
+<div class="txt" id="common"> <div class="checkboxArea" id="myCheckbox0"></div><input type="checkbox" name="format" value="Old Format" tabindex="44" class=" outtaHere">Reconciliation Format(Debit/Credit amount in separate column)</div>
+
+<div class="button_01 fRight" id="pdsv" style="display: block;">
+<input id="downloadRpt" type="submit" value="Download" name="Download" class="input_btn" onclick="javaScript:downloadReport();" tabindex="45" style="display: block;">
+</div>
+<div class="button_01 fRight" id="plain" style="display: none;">
+<input type="submit" name="Action.Accounts.QuerySelection.QueryStatement" onclick="downloadReport1()" class="input_btn" value="Download" tabindex="46" style="display: none;">
+</div>
+<div class="fRight">
+<div class="selectArea custom-select" id="sarea2"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText2" class="center">PDF</span><a onfocus="javascript:onAnchorActivate();" href="javascript:showOptions(2,1)" class="selectButton" id="selectButton2" tabindex="47"></a></div><select class="custom-select outtaHere" name="accountquery" id="selectList2" onchange="ale()" tabindex="48" onfocus="javascript:setFocusOnAnchor('selectButton2');">
+<option value="Download To PDF">PDF</option>
+<option value="Download To CSV">CSV</option>
+<option value="5">Swift MT 940</option>
+<option value="6">Swift MT 950</option>
+</select>
+</div>
+<div class="txt">Download as:</div>
+</div>
+</div>
+</form></div></form>
+<div class="clear"></div>
+<div class="clear10"></div>
+<div class="highlight"> <strong>Please Note:</strong>
+<ul>
+<li>Transactions of last 3 months will be displayed above by default.</li>
+<li>Specified period cannot be greater than 3 months for each enquiry.</li>
+<li>You also have the option to download your account statement with debit and credit entries in different columns and value date for ease of reconciliation. Select reconciliation format and download the statement in the desired format.</li>
+</ul>
+</div>
+
+</div>
+</div>
+<div class="footer">
+<div class="footerLinks">
+
+</div>
+<div class="copyRight">Copyright Kotak Mahindra Bank Limited</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+
+
+
+
+
+
+<script>
+                    
+                    function ale(){
+                    // alert("starting");
+                     setTimeout(function() {
+                    var vale = $('#selectList2').val();
+                  
+						if(vale=='Download To PDF' || vale=='Download To CSV')
+						{
+						//alert("1");
+						document.getElementById("pdsv").style.display="block";
+						var allInputsIO = $("#pdsv :input") ;
+									     for (var ctr = 0; ctr < allInputsIO.length; ctr++)
+							{	allInputsIO[ctr].style.display = "block";
+							}
+						
+						document.getElementById("plain").style.display="none";
+						
+						 allInputsIO = $("#plain :input") ;
+									     for (var ctr = 0; ctr < allInputsIO.length; ctr++)
+							{	allInputsIO[ctr].style.display = "none";
+							}
+						}
+						else{
+						document.getElementById("pdsv").style.display="none";
+						var allInputsIO = $("#pdsv :input") ;
+									     for (var ctr = 0; ctr < allInputsIO.length; ctr++)
+							{	allInputsIO[ctr].style.display = "none";
+							}
+						document.getElementById("plain").style.display="block";
+						 allInputsIO = $("#plain :input") ;
+									     for (var ctr = 0; ctr < allInputsIO.length; ctr++)
+							{	allInputsIO[ctr].style.display = "block";
+							}
+						}                     
+                    }, 100);
+                    }
+                    
+                   $(document).ready(function() {
+                   document.getElementById("pdsv").style.display="block";
+						document.getElementById("plain").style.display="none";
+						
+                 //  setTimeout(function() { 
+                   // alert("a  " +  $('#sarea2ul2').attr("id")); 
+                   //$('#sarea2ul2').find("a").attr("onFocus","javascript:alert('nalayko');"); 
+                 //  $('#sarea2ul2').find("a").each(function(){
+                   //alert($(this).attr("id"));
+                //    alert("asdsada");
+                  // $(this).attr('onclick','ale()'); 
+                   //     alert($(this).attr('onclick'));
+                   
+                 //  });
+                   
+                 //  }, 300);
+                   
+				
+				});
+		
+                    </script>
+<div class="optionsDivInvisible drop-custom-select outtaHere" id="optionsDiv0"><div class="select-top"><div></div></div><ul id="sarea0ul0"><li><a href="javascript:showOptions(0, 2);selectMe('selectList0',0,0);" id="sarea0a0">GSX SOLUTIONS PRIVATE LIMITED(9049183873) &nbsp;</a></li><li><a href="javascript:showOptions(0, 2);selectMe('selectList0',1,0);" id="sarea0a1">GSX SOLUTIONS PRIVATE LIMITED(9049336248) &nbsp;</a></li><li><a href="javascript:showOptions(0, 2);selectMe('selectList0',2,0);" id="sarea0a2">GSX SOLUTIONS PRIVATE LIMITED(9049336255) &nbsp;</a></li><li><a href="javascript:showOptions(0, 2);selectMe('selectList0',3,0);" id="sarea0a3">GSX SOLUTIONS PRIVATE LIMITED(9049336262) &nbsp;</a></li><li><a href="javascript:showOptions(0, 2);selectMe('selectList0',4,0);" id="sarea0a4">GSX SOLUTIONS PRIVATE LIMITED(9049336279) &nbsp;</a></li><li><a href="javascript:showOptions(0, 2);selectMe('selectList0',5,0);" id="sarea0a5">GSX SOLUTIONS PRIVATE LIMITED(9049336286) &nbsp;</a></li></ul><div class="select-bottom"><div class="select-bottom-left"></div><div class="select-bottom-right"></div></div></div><div class="optionsDivInvisible drop-custom-select outtaHere" id="optionsDiv2"><div class="select-top"><div></div></div><ul id="sarea2ul2"><li><a href="javascript:showOptions(2, 2);selectMe('selectList2',0,2);" id="sarea2a0">PDF</a></li><li><a href="javascript:showOptions(2, 2);selectMe('selectList2',1,2);" id="sarea2a1">CSV</a></li><li><a href="javascript:showOptions(2, 2);selectMe('selectList2',2,2);" id="sarea2a2">Swift MT 940</a></li><li><a href="javascript:showOptions(2, 2);selectMe('selectList2',3,2);" id="sarea2a3">Swift MT 950</a></li></ul><div class="select-bottom"><div class="select-bottom-left"></div><div class="select-bottom-right"></div></div></div></body></html>
