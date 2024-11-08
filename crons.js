@@ -54,7 +54,8 @@ function initCronJobs() {
 
   // Every 30 minutes, update the gateway volume data
 cron.schedule('*/30 * * * *', async () => {
-  
+  resetPayhubData()
+  updateGatewayDetailsNewReset()
   adminDao.updateGatewayVolumeData();
 });
 
