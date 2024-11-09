@@ -36,14 +36,30 @@ function initCronJobs() {
       // Run your functions
       myFunction();
       updateAdmin();
-      resetPayhubData()
-      updateGatewayDetailsNewReset()
+      // resetPayhubData()
+      // updateGatewayDetailsNewReset()
       updateAdminYesterdayTx();
       console.log("Running daily admin update.");
 
       // Update the last execution date
       const update = { lastExecutionDate: currentDate };
       await adminDao.updateProfile({ emailId: "samir123@payhub" }, update);
+    }
+  });
+
+  cron.schedule("0 30 18 * * *", async () => {
+    const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
+    const lastExecutionDate = admin.lastExecutionDate;
+    const currentDate = new Date().toISOString().split("T")[0];
+
+    if (lastExecutionDate !== currentDate) {
+      // Run your functions
+     
+      resetPayhubData()
+      updateGatewayDetailsNewReset()
+      console.log("Running daily admin&gateway data update.");
+
+    
     }
   });
 
@@ -54,8 +70,6 @@ function initCronJobs() {
 
   // Every 30 minutes, update the gateway volume data
 cron.schedule('*/30 * * * *', async () => {
-  resetPayhubData()
-  updateGatewayDetailsNewReset()
   adminDao.updateGatewayVolumeData();
 });
 
