@@ -38,7 +38,7 @@ function initCronJobs() {
       updateAdmin();
       // resetPayhubData()
       // updateGatewayDetailsNewReset()
-      updateAdminYesterdayTx();
+      //updateAdminYesterdayTx();
       console.log("Running daily admin update.");
 
       // Update the last execution date
@@ -64,9 +64,9 @@ function initCronJobs() {
   });
 
   // Update admin for yesterday's transactions at 18:40
-  cron.schedule("0 40 18 * * *", async () => {
-    updateAdminYesterdayTx();
-  });
+  // cron.schedule("0 40 18 * * *", async () => {
+  //   updateAdminYesterdayTx();
+  // });
 
   // Every 30 minutes, update the gateway volume data
 cron.schedule('*/30 * * * *', async () => {
