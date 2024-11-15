@@ -7,7 +7,7 @@ require("dotenv").config();
 var res = require("dotenv").config();
 const { initCronJobs } = require("./crons");
 const config = require("./lib/config");
-const { updatePendingTransactionStatus } = require("./lib/routesAndServices/scheduler/statusScheduler");
+const { updatePendingTransactionStatus, updatePendingTransactionStatus2 } = require("./lib/routesAndServices/scheduler/statusScheduler");
 const { connectRedis } = require("./lib/routesAndServices/utils/redis");
 const { findParticularTx } = require("./lib/routesAndServices/utils/transactionDao");
 //const { payhubBankScrapper } = require("./lib/gateways/payhub")
@@ -18,6 +18,7 @@ connectRedis()
 initCronJobs()
 
 // updatePendingTransactionStatus()
+//updatePendingTransactionStatus2()
 //payhubBankScrapper()
 //findParticularTx()
 config.dbConfig((err) => {

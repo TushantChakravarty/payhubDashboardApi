@@ -95,6 +95,9 @@ cron.schedule('0 */3 * * *', async () => {
 //     await updatePendingTransactionStatus();
 //     console.log('Batch processing window completed.');
 // });
+//  adminDao.updateVolumeData("success");
+//  adminDao.getTotalVolume("success");
+//  adminDao.updateGatewayVolumeData();
   console.log('All cron jobs have been initialized.');
 }
 
