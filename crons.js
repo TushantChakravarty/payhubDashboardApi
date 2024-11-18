@@ -74,13 +74,13 @@ function initCronJobs() {
 // });
 
 // Every 50 minutes, update volume data and payouts
-cron.schedule('*/50 * * * *', async () => {
-  await adminDao.updateVolumeData("success");
-  await adminDao.getTotalVolume("success");
-  await adminDao.updateGatewayVolumeData();
-  await updateVolumeDataPayouts("success");
-  await getTotalAdminVolumePayouts("success");
-});
+// cron.schedule('*/50 * * * *', async () => {
+//   await adminDao.updateVolumeData("success");
+//   await adminDao.getTotalVolume("success");
+//   await adminDao.updateGatewayVolumeData();
+//   await updateVolumeDataPayouts("success");
+//   await getTotalAdminVolumePayouts("success");
+// });
 
 // Every 3 hours, update gateway balance and admin balances
 
