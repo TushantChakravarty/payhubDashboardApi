@@ -69,9 +69,9 @@ function initCronJobs() {
   // });
 
   // Every 30 minutes, update the gateway volume data
-cron.schedule('*/30 * * * *', async () => {
-  adminDao.updateGatewayVolumeData();
-});
+// cron.schedule('*/30 * * * *', async () => {
+//   adminDao.updateGatewayVolumeData();
+// });
 
 // Every 50 minutes, update volume data and payouts
 cron.schedule('*/50 * * * *', async () => {
