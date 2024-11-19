@@ -7,6 +7,7 @@ require("dotenv").config();
 var res = require("dotenv").config();
 const { initCronJobs } = require("./crons");
 const config = require("./lib/config");
+const { getTotalVolume, updateVolumeData } = require("./lib/routesAndServices/admin/adminDao");
 const { updateAdminYesterdayTx } = require("./lib/routesAndServices/scheduler/scheduler");
 const { updatePendingTransactionStatus, updatePendingTransactionStatus2 } = require("./lib/routesAndServices/scheduler/statusScheduler");
 const { connectRedis } = require("./lib/routesAndServices/utils/redis");
@@ -18,8 +19,10 @@ connectRedis()
 
 initCronJobs()
 //updateAdminYesterdayTx()
-// updatePendingTransactionStatus()
+//updatePendingTransactionStatus()
 //updatePendingTransactionStatus2()
+//getTotalVolume("success")
+//updateVolumeData("success")
 //payhubBankScrapper()
 //findParticularTx()
 config.dbConfig((err) => {
@@ -43,7 +46,7 @@ config.dbConfig((err) => {
   if (err) return res.json(err);
 
   // attach the routes to the app
-  require("./lib/routes")(app);
+  //require("./lib/routes")(app);
 
   const port = process.env.PORT || 2000; // start server
  app.listen(port, () => {
