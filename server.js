@@ -10,11 +10,11 @@ const config = require("./lib/config");
 const { getTotalVolume, updateVolumeData } = require("./lib/routesAndServices/admin/adminDao");
 const { updateAdminYesterdayTx } = require("./lib/routesAndServices/scheduler/scheduler");
 const { updatePendingTransactionStatus, updatePendingTransactionStatus2 } = require("./lib/routesAndServices/scheduler/statusScheduler");
-const { connectRedis } = require("./lib/routesAndServices/utils/redis");
+//const { connectRedis } = require("./lib/routesAndServices/utils/redis");
 const { findParticularTx } = require("./lib/routesAndServices/utils/transactionDao");
 //const { payhubBankScrapper } = require("./lib/gateways/payhub")
 
-connectRedis()
+//connectRedis()
 
 
 initCronJobs()
