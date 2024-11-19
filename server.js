@@ -46,7 +46,7 @@ config.dbConfig((err) => {
   if (err) return res.json(err);
 
   // attach the routes to the app
-  //require("./lib/routes")(app);
+  require("./lib/routes")(app);
 
   const port = process.env.PORT || 2000; // start server
  app.listen(port, () => {

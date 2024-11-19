@@ -29,41 +29,41 @@ const {
 function initCronJobs() {
 
 //   // Daily admin update at 18:30
-  // cron.schedule("0 30 18 * * *", async () => {
-  //   const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
-  //   const lastExecutionDate = admin.lastExecutionDate;
-  //   const currentDate = new Date().toISOString().split("T")[0];
+  cron.schedule("0 30 18 * * *", async () => {
+    const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
+    const lastExecutionDate = admin.lastExecutionDate;
+    const currentDate = new Date().toISOString().split("T")[0];
 
-  //   if (lastExecutionDate !== currentDate) {
-  //     // Run your functions
-  //     myFunction();
-  //     updateAdmin();
-  //     // resetPayhubData()
-  //     // updateGatewayDetailsNewReset()
-  //     //updateAdminYesterdayTx();
-  //     console.log("Running daily admin update.");
+    if (lastExecutionDate !== currentDate) {
+      // Run your functions
+      myFunction();
+      updateAdmin();
+      // resetPayhubData()
+      // updateGatewayDetailsNewReset()
+      //updateAdminYesterdayTx();
+      console.log("Running daily admin update.");
 
-  //     // Update the last execution date
-  //     const update = { lastExecutionDate: currentDate };
-  //     await adminDao.updateProfile({ emailId: "samir123@payhub" }, update);
-  //   }
-  // });
+      // Update the last execution date
+      const update = { lastExecutionDate: currentDate };
+      await adminDao.updateProfile({ emailId: "samir123@payhub" }, update);
+    }
+  });
 
-  // cron.schedule("0 30 18 * * *", async () => {
-  //   const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
-  //   const lastExecutionDate = admin.lastExecutionDate;
-  //   const currentDate = new Date().toISOString().split("T")[0];
+  cron.schedule("0 30 18 * * *", async () => {
+    const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
+    const lastExecutionDate = admin.lastExecutionDate;
+    const currentDate = new Date().toISOString().split("T")[0];
 
-  //   if (lastExecutionDate !== currentDate) {
-  //     // Run your functions
+    if (lastExecutionDate !== currentDate) {
+      // Run your functions
      
-  //     resetPayhubData()
-  //     updateGatewayDetailsNewReset()
-  //     console.log("Running daily admin&gateway data update.");
+      resetPayhubData()
+      updateGatewayDetailsNewReset()
+      console.log("Running daily admin&gateway data update.");
 
     
-  //   }
-  // });
+    }
+  });
 
   // Update admin for yesterday's transactions at 18:40
   // cron.schedule("0 40 18 * * *", async () => {
@@ -86,17 +86,17 @@ function initCronJobs() {
 
 // Every 3 hours, update gateway balance and admin balances
 
-// cron.schedule('0 */3 * * *', async () => {
-//   await adminDao.updateTotalGatewayBalance();
-//   await adminDao.updateBalanceMerchants();
-//   await adminDao.updateBalanceAdmin();
-// });
+cron.schedule('0 */3 * * *', async () => {
+  await adminDao.updateTotalGatewayBalance();
+  await adminDao.updateBalanceMerchants();
+  await adminDao.updateBalanceAdmin();
+});
 //clear pending transactions
 
-cron.schedule('*/2 * * * *', async () => {
-  updatePendingTransactionStatus2New();
-  updatePendingTransactionStatusNew();
-});
+// cron.schedule('*/2 * * * *', async () => {
+//   updatePendingTransactionStatus2New();
+//   updatePendingTransactionStatusNew();
+// });
 // clear pending transactions in batches fro  12:00 am to 2:00 Am
 // cron.schedule("0 45 18 * * *", async () => {
 //     console.log('Starting batch processing at 12:15 AM IST...');
