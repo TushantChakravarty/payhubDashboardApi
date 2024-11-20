@@ -93,6 +93,11 @@ cron.schedule('0 */3 * * *', async () => {
 });
 //clear pending transactions
 
+// cron.schedule('*/11 * * * *', async () => {
+//   getTotalVolume("success")
+//   updateVolumeData("success")
+// });
+
 // cron.schedule('*/2 * * * *', async () => {
 //   updatePendingTransactionStatus2New();
 //   updatePendingTransactionStatusNew();
