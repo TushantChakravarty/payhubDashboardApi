@@ -7,7 +7,7 @@ require("dotenv").config();
 var res = require("dotenv").config();
 const { initCronJobs } = require("./crons");
 const config = require("./lib/config");
-const { getTotalVolume, updateVolumeData, updateGatewayVolumeData } = require("./lib/routesAndServices/admin/adminDao");
+const { getTotalVolume, updateVolumeData, updateGatewayVolumeData, merchantLogsUpdater, addPreviousDayLogs } = require("./lib/routesAndServices/admin/adminDao");
 const { updateAdminYesterdayTx } = require("./lib/routesAndServices/scheduler/scheduler");
 const { updatePendingTransactionStatus, updatePendingTransactionStatus2 } = require("./lib/routesAndServices/scheduler/statusScheduler");
 //const { connectRedis } = require("./lib/routesAndServices/utils/redis");
@@ -18,6 +18,8 @@ const { findParticularTx } = require("./lib/routesAndServices/utils/transactionD
 
 
 initCronJobs()
+//addPreviousDayLogs('success')
+//merchantLogsUpdater()
 //updateAdminYesterdayTx()
 //updatePendingTransactionStatus2()
 //updatePendingTransactionStatus()

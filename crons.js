@@ -65,6 +65,10 @@ function initCronJobs() {
     }
   });
 
+  cron.schedule("0 30 19 * * *", async () => {
+   await adminDao.addPreviousDayLogs()
+  });
+
   // Update admin for yesterday's transactions at 18:40
   // cron.schedule("0 40 18 * * *", async () => {
   //   updateAdminYesterdayTx();
