@@ -30,6 +30,7 @@ function initCronJobs() {
 
 //   // Daily admin update at 18:30
   cron.schedule("0 30 18 * * *", async () => {
+    console.log('reset started')
     const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
     const lastExecutionDate = admin.lastExecutionDate;
     const currentDate = new Date().toISOString().split("T")[0];
@@ -50,6 +51,8 @@ function initCronJobs() {
   });
 
   cron.schedule("0 30 18 * * *", async () => {
+    console.log('reset started 2')
+
     const admin = await adminDao.getUserDetails({ emailId: "samir123@payhub" });
     const lastExecutionDate = admin.lastExecutionDate;
     const currentDate = new Date().toISOString().split("T")[0];
