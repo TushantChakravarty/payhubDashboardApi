@@ -68,7 +68,8 @@ function initCronJobs() {
     }
   });
 
-  cron.schedule("0 30 19 * * *", async () => {
+  cron.schedule("0 35 18 * * *", async () => {
+    console.log('daily logs update started')
    await adminDao.addPreviousDayLogs()
   });
 
