@@ -68,10 +68,10 @@ function initCronJobs() {
     }
   });
 
-  cron.schedule("0 30 20 * * *", async () => {
-    console.log('daily logs update started')
-   await adminDao.addPreviousDayLogs("success")
-  });
+  // cron.schedule("0 30 20 * * *", async () => {
+  //   console.log('daily logs update started')
+  //  await adminDao.addPreviousDayLogs("success")
+  // });
 
   // Update admin for yesterday's transactions at 18:40
   // cron.schedule("0 40 18 * * *", async () => {
