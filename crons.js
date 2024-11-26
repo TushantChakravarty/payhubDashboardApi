@@ -94,11 +94,11 @@ function initCronJobs() {
 
 // Every 3 hours, update gateway balance and admin balances
 
-cron.schedule('0 */3 * * *', async () => {
-  await adminDao.updateTotalGatewayBalance();
-  await adminDao.updateBalanceMerchants();
-  await adminDao.updateBalanceAdmin();
-});
+// cron.schedule('0 */3 * * *', async () => {
+//   await adminDao.updateTotalGatewayBalance();
+//   await adminDao.updateBalanceMerchants();
+//   await adminDao.updateBalanceAdmin();
+// });
 //clear pending transactions
 
 // cron.schedule('*/11 * * * *', async () => {
