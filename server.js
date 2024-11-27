@@ -3,7 +3,8 @@
 console.log("");
 console.log("//API SANDWICH BACKEND//");
 console.log("");
-require("dotenv").config();
+const environment =  "prod";
+require("dotenv").config({ path: `.env.${environment}` });
 var res = require("dotenv").config();
 const { initCronJobs } = require("./crons");
 const config = require("./lib/config");
@@ -17,7 +18,7 @@ const { findParticularTx } = require("./lib/routesAndServices/utils/transactionD
 //connectRedis()
 
 
-initCronJobs()
+//initCronJobs()
 //addPreviousDayLogs('success')
 //merchantLogsUpdater()
 //updateAdminYesterdayTx()
