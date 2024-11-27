@@ -3,7 +3,7 @@
 console.log("");
 console.log("//API SANDWICH BACKEND//");
 console.log("");
-const environment =  "prod";
+const environment =  "development";
 require("dotenv").config({ path: `.env.${environment}` });
 var res = require("dotenv").config();
 const { initCronJobs } = require("./crons");
