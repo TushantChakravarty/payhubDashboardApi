@@ -48,7 +48,7 @@ function initCronJobs() {
   // daily email sending cron
   // 30 * * * * *
   // 58 23 * * *
-  cron.schedule("30 0 * * *", async () => {
+  cron.schedule("0 0 19 * * *", async () => {
     try{
       console.log("every 30 second cron")
       const url = await downloadEmailReport()
