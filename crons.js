@@ -18,6 +18,8 @@ const {
   updatePendingTransactionStatus,
   updatePendingTransactionStatus2New,
   updatePendingTransactionStatusNew,
+  updatePendingTransactionStatus3New,
+  updatePendingTransactionStatus4New,
 } = require("./lib/routesAndServices/scheduler/statusScheduler");
 const {
   updateVolumeDataPayouts,
@@ -239,6 +241,8 @@ function initCronJobs() {
 // cron.schedule('*/2 * * * *', async () => {
 //   updatePendingTransactionStatus2New();
 //   updatePendingTransactionStatusNew();
+//   updatePendingTransactionStatus3New()
+//   updatePendingTransactionStatus4New()
 // });
 // clear pending transactions in batches fro  12:00 am to 2:00 Am
 // cron.schedule("0 45 18 * * *", async () => {
