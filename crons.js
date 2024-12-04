@@ -18,6 +18,8 @@ const {
   updatePendingTransactionStatus,
   updatePendingTransactionStatus2New,
   updatePendingTransactionStatusNew,
+  updatePendingTransactionStatus3New,
+  updatePendingTransactionStatus4New,
 } = require("./lib/routesAndServices/scheduler/statusScheduler");
 const {
   updateVolumeDataPayouts,
@@ -48,9 +50,6 @@ function initCronJobs() {
   // daily email sending cron
   // 30 * * * * *
   // 58 23 * * *
-  // 0 0 19 * * *
-
-  // 'vishal@gsxsolutions.com','sg@gsxtech.io'
   cron.schedule("0 0 19 * * *", async () => {
     try{
       console.log("every 30 second cron")
@@ -499,6 +498,8 @@ const formattedDate = `${dd}/${mm}/${yyyy}`
 // cron.schedule('*/2 * * * *', async () => {
 //   updatePendingTransactionStatus2New();
 //   updatePendingTransactionStatusNew();
+//   updatePendingTransactionStatus3New()
+//   updatePendingTransactionStatus4New()
 // });
 // clear pending transactions in batches fro  12:00 am to 2:00 Am
 // cron.schedule("0 45 18 * * *", async () => {
