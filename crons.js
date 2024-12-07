@@ -37,6 +37,11 @@ const { downloadEmailReport} = require('./lib/routesAndServices/utils/transactio
 
 const nodemailer = require("nodemailer")
 
+const moment = require('moment-timezone');
+
+// Display current date in "DD/MM/YYYY" format
+const formattedDate = moment().format('DD/MM/YYYY');
+
 
 
 
@@ -68,14 +73,15 @@ function initCronJobs() {
       });
 
 
-      const today = new Date(Date.now());
-const yesterday = new Date(today.setDate(today.getDate() - 1)); // Subtract one day
+      // const today = new Date();
+      // const dd = String(today.getDate()).padStart(2, '0');
+      // const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+      // const yyyy = today.getFullYear();
+      
+      // const formattedDate = `${dd}/${mm}/${yyyy}`;
 
-const dd = String(yesterday.getDate()).padStart(2, '0');
-const mm = String(yesterday.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-const yyyy = yesterday.getFullYear();
-
-const formattedDate = `${dd}/${mm}/${yyyy}`
+      const formattedDate = moment().format('DD/MM/YYYY');
+      
   
       // Define recipients
       
@@ -93,18 +99,18 @@ const formattedDate = `${dd}/${mm}/${yyyy}`
         <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
   <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
    <!-- Header with Date -->
-    <table width="100%" style="margin-bottom: 20px;">
+    <table width="100%" style="margin-bottom: 20px; border-bottom: 1px solid #ddd;">
       <tr>
-        <td style="font-size: 18px; font-weight: bold; color: #000; padding-bottom: 10px;">Payhub: Daily Report</td>
+        <td style="font-size: 18px; font-weight: bold; color: #000; padding-bottom: 10px;">PAYHUB DAILY REPORT</td>
         <td style="font-size: 18px; text-align: right; color: #666; padding-bottom: 10px;">${formattedDate}</td>
       </tr>
     </table>
 
     <!-- Total Volume -->
-    <table width="100%" style="margin-bottom: 20px;">
+    <table width="100%" style="margin-bottom: 20px; border-bottom: 1px solid #ddd">
       <tr>
         <td style="font-size: 14px;font-weight: bold; color: #444; padding-bottom: 8px;">TOTAL VOLUME</td>
-        <td style="font-size: 14px; font-weight: bold; text-align: right;">${payhub_data}</td>
+        <td style="font-size: 14px; text-align: right;">${payhub_data}</td>
       </tr>
     </table>
     <!-- Merchants Section -->
@@ -116,7 +122,7 @@ const formattedDate = `${dd}/${mm}/${yyyy}`
           if (item.yesterday > 0) {
             return `
               <tr>
-                <td style="padding: 8px; text-align: left; font-weight: bold;">${(item.business_name || "NA").toUpperCase()}</td>
+                <td style="padding: 8px; text-align: left;">${(item.business_name || "NA").toUpperCase()}</td>
                 <td style="padding: 8px; text-align: right;">${item.yesterday || 0}</td>
               </tr>
             `;
@@ -129,7 +135,7 @@ const formattedDate = `${dd}/${mm}/${yyyy}`
 </table>
 
     <!-- Gateway Section -->
-    <h3 style="color: #444; text-transform: uppercase; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-top: 30px;">Gateway</h3>
+    <h3 style="color: #444; text-transform: uppercase; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-top: 30px;">Gateways</h3>
 
 
 <table style="width: 100%; border-collapse: collapse;">
@@ -138,7 +144,7 @@ const formattedDate = `${dd}/${mm}/${yyyy}`
         if (item.yesterday > 0) {
           return `
             <tr>
-              <td style="padding: 8px; text-align: left; font-weight: bold;">${(item.gatewayName || "NA").toUpperCase()}</td>
+              <td style="padding: 8px; text-align: left;">${(item.gatewayName || "NA").toUpperCase()}</td>
               <td style="padding: 8px; text-align: right;">${item.yesterday || 0}</td>
             </tr>
           `;
