@@ -1,0 +1,313 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-backend
+  labels:
+    app: dashboard-backend
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: dashboard-backend
+  template:
+    metadata:
+      labels:
+        app: dashboard-backend
+    spec:
+      containers:
+      - name: dashboard-backend
+        image: tushant029/dashboard-backend:latest
+        env:
+        - name: JWTSECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: JWTSECRET
+        - name: SECRETKEY
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: SECRETKEY
+        - name: PAGEEXPIRY
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PAGEEXPIRY
+        - name: AIRPAYMERCID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYMERCID
+        - name: AIRPAYUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYUSERNAME
+        - name: AIRPAYPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYPASSWORD
+        - name: AIRPAYSECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYSECRET
+        - name: AIRPAYMERCID2
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYMERCID2
+        - name: AIRPAYUSERNAME2
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYUSERNAME2
+        - name: AIRPAYPASSWORD2
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYPASSWORD2
+        - name: AIRPAYSECRET2
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYSECRET2
+        - name: AIRPAYMERCID4
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYMERCID4
+        - name: AIRPAYUSERNAME4
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYUSERNAME4
+        - name: AIRPAYPASSWORD4
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYPASSWORD4
+        - name: AIRPAYSECRET4
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYSECRET4
+        - name: AIRPAYMERCID3
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYMERCID3
+        - name: AIRPAYUSERNAME3
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYUSERNAME3
+        - name: AIRPAYPASSWORD3
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYPASSWORD3
+        - name: AIRPAYSECRET3
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AIRPAYSECRET3
+        - name: BAZARPAYCODE
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: BAZARPAYCODE
+        - name: BAZARPAYSECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: BAZARPAYSECRET
+        - name: PHONEPESALTKEY
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PHONEPESALTKEY
+        - name: PHONEPEMERCHANTID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PHONEPEMERCHANTID
+        - name: CF_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: CF_CLIENT_ID
+        - name: CF_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: CF_CLIENT_SECRET
+        - name: CASHFREE_PAYINS_CLIENT_ID_PROD
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: CASHFREE_PAYINS_CLIENT_ID_PROD
+        - name: CASHFREE_PAYINS_CLIENT_SECRET_PROD
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: CASHFREE_PAYINS_CLIENT_SECRET_PROD
+        - name: PAYTHROUGH_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PAYTHROUGH_CLIENT_ID
+        - name: PAYTHROUGH_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PAYTHROUGH_CLIENT_SECRET
+        - name: RAZORPAY_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: RAZORPAY_KEY_ID
+        - name: RAZORPAY_KEY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: RAZORPAY_KEY_SECRET
+        - name: PGBRO_MERCHANT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PGBRO_MERCHANT_ID
+        - name: PGBRO_MERCHANT_APIKEY
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: PGBRO_MERCHANT_APIKEY
+        - name: LIVE_URL
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: LIVE_URL
+        - name: adminId
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: adminId
+        - name: apiKey
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: apiKey
+        - name: dbURL
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: dbURL
+        - name: KWIKPAISAURL
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISAURL
+        - name: KWIKPAISAAPPID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISAAPPID
+        - name: KWIKPAISASECRET
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISASECRET
+        - name: KWIKPAISAAPPIDPAYOUTS
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISAAPPIDPAYOUTS
+        - name: KWIKPAISASECRETPAYOUTS
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISASECRETPAYOUTS
+        - name: KWIKPAISAWALLETID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISAWALLETID
+        - name: KWIKPAISAPAYOUTURL
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: KWIKPAISAPAYOUTURL
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: AWS_REGION
+        - name: S3_BUCKET_NAME
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: S3_BUCKET_NAME
+        - name: SQS_QUEUE_URL_SAVETXAIRPAY
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: SQS_QUEUE_URL_SAVETXAIRPAY
+        - name: SQS_QUEUE_URL_SAVETXAIRPAY2
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: SQS_QUEUE_URL_SAVETXAIRPAY2
+        - name: SQS_QUEUE_URL_SAVETXAIRPAY3
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: SQS_QUEUE_URL_SAVETXAIRPAY3
+        - name: SQS_QUEUE_URL_PHONEPE
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: SQS_QUEUE_URL_PHONEPE
+        - name: SQS_QUEUE_URL_PGBRO
+          valueFrom:
+            secretKeyRef:
+              name: dashboard-secret
+              key: SQS_QUEUE_URL_PGBRO
+
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "250Mi"
+          # limits:
+          #   cpu: "250m"
+          #   memory: "256Mi"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: dashboard-hpa
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: dashboard-backend
+  minReplicas: 10
+  maxReplicas: 1000
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70

@@ -1,0 +1,20 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: dashboard-cluster-new
+  region: ap-south-1
+  version: "1.31"
+
+iam:
+  withOIDC: true
+  serviceRoleARN: arn:aws:iam::813300926344:role/EKSClusterRole
+
+nodeGroups:
+  - name: dashboard-worker-nodes
+    instanceType: c5.xlarge
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 100
+    iam:
+      instanceRoleARN: arn:aws:iam::813300926344:role/EC2SSMAccessRole

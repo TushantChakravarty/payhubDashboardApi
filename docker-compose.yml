@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  dashboard-worker:
+    build:
+      context: .
+    container_name: dashboard-backend
+    ports:
+      - "2000:2000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
