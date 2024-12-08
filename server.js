@@ -18,7 +18,7 @@ const { findParticularTx } = require("./lib/routesAndServices/utils/transactionD
 //connectRedis()
 
 
-initCronJobs()
+//initCronJobs()
 //addPreviousDayLogs('success')
 //merchantLogsUpdater()
 //updateAdminYesterdayTx()
