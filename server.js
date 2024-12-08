@@ -10,7 +10,7 @@ const { initCronJobs } = require("./crons");
 const config = require("./lib/config");
 const { getTotalVolume, updateVolumeData, updateGatewayVolumeData, merchantLogsUpdater, addPreviousDayLogs } = require("./lib/routesAndServices/admin/adminDao");
 const { updateAdminYesterdayTx } = require("./lib/routesAndServices/scheduler/scheduler");
-const { updatePendingTransactionStatus, updatePendingTransactionStatus2 } = require("./lib/routesAndServices/scheduler/statusScheduler");
+const { updatePendingTransactionStatus, updatePendingTransactionStatus2, updatePendingTransactionStatusNew, updatePendingTransactionStatus3New, updatePendingTransactionStatus2New, updatePendingTransactionStatus4New } = require("./lib/routesAndServices/scheduler/statusScheduler");
 //const { connectRedis } = require("./lib/routesAndServices/utils/redis");
 const { findParticularTx } = require("./lib/routesAndServices/utils/transactionDao");
 //const { payhubBankScrapper } = require("./lib/gateways/payhub")
@@ -23,6 +23,10 @@ initCronJobs()
 //merchantLogsUpdater()
 //updateAdminYesterdayTx()
 //updatePendingTransactionStatus2()
+//updatePendingTransactionStatus3New()
+//updatePendingTransactionStatusNew()
+//updatePendingTransactionStatus4New()
+//updatePendingTransactionStatus2New()
 //updatePendingTransactionStatus()
 // getTotalVolume("success")
 // updateVolumeData("success")
