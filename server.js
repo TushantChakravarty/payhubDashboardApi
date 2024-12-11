@@ -29,9 +29,9 @@ const client = require('prom-client');
 //updatePendingTransactionStatus4New()
 //updatePendingTransactionStatus2New()
 //updatePendingTransactionStatus()
-// getTotalVolume("success")
-// updateVolumeData("success")
-// updateGatewayVolumeData()
+//  getTotalVolume("success")
+//  updateVolumeData("success")
+//  updateGatewayVolumeData()
 //payhubBankScrapper()
 //findParticularTx()
 
