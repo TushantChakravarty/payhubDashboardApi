@@ -478,7 +478,7 @@ function initCronJobs() {
 //   adminDao.updateGatewayVolumeData();
 // });
 
-//Every 50 minutes, update volume data and payouts
+//Every 5 hrs update volume data and payouts
 cron.schedule('0 */5 * * *', async () => {
   await adminDao.updateVolumeData("success");
   await adminDao.getTotalVolume("success");
@@ -494,6 +494,15 @@ cron.schedule('0 */3 * * *', async () => {
   await adminDao.updateBalanceMerchants();
   await adminDao.updateBalanceAdmin();
 });
+
+cron.schedule('*/15 * * * *', async () => {
+  updatePendingTransactionStatus2New();
+  updatePendingTransactionStatusNew();
+  updatePendingTransactionStatus3New();
+  updatePendingTransactionStatus4New();
+});
+
+
 //clear pending transactions
 
 // cron.schedule('*/11 * * * *', async () => {
@@ -502,8 +511,8 @@ cron.schedule('0 */3 * * *', async () => {
 // });
 
 cron.schedule('30 * * * * *', async () => {
-  updatePendingTransactionStatus2New();
-//   updatePendingTransactionStatusNew();
+ // updatePendingTransactionStatus2New();
+  updatePendingTransactionStatusNew();
 //updatePendingTransactionStatus3New()
 //  updatePendingTransactionStatus4New()
 });
