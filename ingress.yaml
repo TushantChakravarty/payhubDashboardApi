@@ -9,6 +9,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:813300926344:certificate/a317c5bc-2e44-4ed3-b87e-0e5506d827b7
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=4000 # Set timeout to 300 seconds
 spec:
   rules:
   - host: api.payhub.link
