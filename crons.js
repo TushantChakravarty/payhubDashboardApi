@@ -487,6 +487,13 @@ cron.schedule('0 */5 * * *', async () => {
   await getTotalAdminVolumePayouts("success");
 });
 
+cron.schedule('*/40 * * * *', async () => {
+  await adminDao.updateVolumeData("success");
+  await adminDao.getTotalVolume("success");
+  await adminDao.updateGatewayVolumeData();
+});
+
+
 // Every 3 hours, update gateway balance and admin balances
 
 cron.schedule('0 */3 * * *', async () => {
@@ -512,8 +519,8 @@ cron.schedule('*/15 * * * *', async () => {
 
 cron.schedule('30 * * * * *', async () => {
  // updatePendingTransactionStatus2New();
-  updatePendingTransactionStatusNew();
-//updatePendingTransactionStatus3New()
+  //updatePendingTransactionStatusNew();
+updatePendingTransactionStatus3New()
 //  updatePendingTransactionStatus4New()
 });
 // clear pending transactions in batches fro  12:00 am to 2:00 Am

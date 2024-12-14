@@ -35,7 +35,7 @@ const client = require("prom-client");
 
 //connectRedis()
 
-//initCronJobs()
+initCronJobs()
 //addPreviousDayLogs('success')
 //payhubBankScrapper()
 //findParticularTx()
